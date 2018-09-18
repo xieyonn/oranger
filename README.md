@@ -2,7 +2,7 @@
 Persion php + react web site
 
 ## dependence
-- php7
+- php7 + yaf
 - node
 
 ## configure
