@@ -1,0 +1,21 @@
+{
+    "name": "xieyong/pages",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xieyong",
+            "email": "qxieyongp@163.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "xieyong/date-time-helper": "^1.0.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://micode.be.xiaomi.com/xieyong/date-time-helper"
+        }
+    ]
+}

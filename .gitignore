@@ -1,0 +1,19 @@
+/.idea
+/.vscode
+
+# php
+/vendor/
+
+# node
+**/node_modules/
+npm-debug.log
+yarn-error.log
+
+# js config
+/front/src/config/local.js
+
+# build
+dist/
+
+# php config
+/conf/config.php
