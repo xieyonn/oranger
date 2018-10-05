@@ -8,7 +8,7 @@
  * @Time: 16:00
  */
 
-$config = require('./config.php');
+$config = require(CONFIG_PATH . '/config.php');
 
 return [
     'default_db' => [

@@ -11,8 +11,13 @@
   },
   "author": "xieyong",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xieyong1023/pages.git"
+  },  
   "dependencies": {
     "@material-ui/core": "^3.0.3",
+    "@material-ui/icons": "^3.0.1",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
@@ -20,7 +25,10 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.8",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

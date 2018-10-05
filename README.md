@@ -7,7 +7,7 @@ Persion php + react web site
 
 ## configure
 - php copy file `conf/config.sample.php` as `conf/config.php`
-- js copy file `front/src/config/dev.js` as `front/src/config/local.js`
+- js copy file `client/src/config/dev.js` as `client/src/config/local.js`
 
 ## dev
 1. `npm install`

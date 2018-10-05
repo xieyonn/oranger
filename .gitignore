@@ -10,7 +10,7 @@ npm-debug.log
 yarn-error.log
 
 # js config
-/front/src/config/local.js
+/client/src/config/local.js
 
 # build
 dist/
