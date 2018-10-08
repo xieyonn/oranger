@@ -11,7 +11,7 @@
 $config = require(CONFIG_PATH . '/config.php');
 
 return [
-    'default_db' => [
+    'db' => [
         'database_type' => $config['db.database_type'],
         'database_name' => $config['db.database_name'],
         'ip' => $config['db.ip'],

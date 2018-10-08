@@ -1,4 +1,5 @@
 <?php
+
 /**
  *@brief test
  *
@@ -18,15 +19,12 @@ use app\Library\Tools\ProfileSingleton;
 use App\Library\Process\MultiProcess;
 use App\Library\Tools\DateTimeHelper;
 
-
 class TestCommand extends CommandBase
 {
     public function runAction()
     {
-        $a = 118083128260344501;
-        $b = pow(2, 63);
-        var_dump(pow(2, 64));
-        var_dump($a > $b);
+        $obj = new B();
+        $obj->index();
     }
 
     public function f1($line)
