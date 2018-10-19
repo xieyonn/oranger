@@ -16,9 +16,11 @@ class ConsoleWriter implements LogWriter
     {
     }
 
-    public function write(string $log_name, string $content)
+    public function write($log_name, $content)
     {
-        $print = '[' . $log_name . ']' . $content;
-        echo $print;
+        if (PHP_SAPI === 'cli') {
+            $print = '[' . $log_name . ']' . $content;
+            echo $print;
+        }
     }
 }

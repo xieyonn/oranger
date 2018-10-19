@@ -12,23 +12,22 @@ namespace App\Library\Logger;
 class LogAdapterFactory
 {
     protected static $m_type_class = [
-        self::ADAPTER_TYPE_FILE    => '\App\Library\Logger\Adapter\FileWriter',
-        self::ADAPTER_TYPE_CONSOLE => '\App\Library\Logger\Adapter\ConsoleWriter',
+        self::ADAPTER_TYPE_FILE => __NAMESPACE__ . "\\adapter\FileWriter",
+        self::ADAPTER_TYPE_CONSOLE => __NAMESPACE__ . '\\adapter\ConsoleWriter',
     ];
 
-    const ADAPTER_TYPE_FILE    = 'file';
+    const ADAPTER_TYPE_FILE = 'file';
     const ADAPTER_TYPE_CONSOLE = 'console';
 
     /**
      * 日志适配器工厂方法
      *
      * @param $adapter_type
-     * @param $params
      */
     public static function getLogAdapter($adapter_type)
     {
         $adapter_classname = '';
-        if (empty($adapter_type) || ! \array_key_exists($adapter_type, self::$m_type_class)) {
+        if (empty($adapter_type) || !\array_key_exists($adapter_type, self::$m_type_class)) {
             // 默认写文件
             $adapter_classname = self::$m_type_class[self::ADAPTER_TYPE_FILE];
         } else {

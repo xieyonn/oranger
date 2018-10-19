@@ -14,6 +14,16 @@ use App\Library\Console\CommandBase;
 
 class ToolCommand extends CommandBase
 {
+    public function doAction()
+    {
+        $a = file_get_contents('/Users/xieyong/tmp/a');
+        $b = file_get_contents('/Users/xieyong/tmp/b');
+
+        $a_arr = explode("\n", $a);
+        $b_arr = explode("\n", $b);
+        var_dump(array_diff($a_arr, $b_arr));
+    }
+    
     public function indexAction()
     {
         var_dump(strlen('118091370010096500'));

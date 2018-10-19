@@ -21,7 +21,7 @@ class FileWriter implements LogWriter
     /**
      * @var int 日志文件权限
      */
-    protected $file_permissions = 0644;
+    protected $file_permissions = 0777;
 
     public function __construct($dir = '')
     {
@@ -30,27 +30,31 @@ class FileWriter implements LogWriter
 
     /**
      * 写到文件
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      * @param string $log_name 日志名（文件名）
      * @param string $content  内容
      */
-    public function write(string $log_name, string $content)
+    public function write($log_name, $content)
     {
         $dir = rtrim($this->dir, DIRECTORY_SEPARATOR);
 
-        if (! file_exists($dir)) {
-            mkdir($dir, $this->file_permissions);
+        try {
+            if (!file_exists($dir)) {
+                mkdir($dir, $this->file_permissions);
+            }
+
+            // 日志按日期归类
+            $sub_dir = $dir . DIRECTORY_SEPARATOR . date('Y_m_d');
+
+            if (!file_exists($sub_dir)) {
+                mkdir($sub_dir, $this->file_permissions);
+            }
+
+            // 写日志
+            $file = $sub_dir . DIRECTORY_SEPARATOR . $log_name . "_" . DATE_STRING;
+            file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
+        } catch (\Exception $e) {
+            throw new SystemException('FILE_PERMISSION_ERROR', [], $e);
         }
-
-        // 日志按日期归类
-        $sub_dir = $dir . DIRECTORY_SEPARATOR . date('Y_m_d', NOW_TIME);
-
-        if (! file_exists($sub_dir)) {
-            mkdir($sub_dir, $this->file_permissions);
-        }
-
-        // 写日志
-        $file = $sub_dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
-        file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
     }
 }

@@ -11,6 +11,7 @@
 namespace App\Library\Logger;
 
 use Throwable;
+use Exception;
 
 class Logger
 {
@@ -49,6 +50,7 @@ class Logger
         'delay_write' => true,         // 是否延迟写入
         'seperator' => ' ',
         'appid' => '',
+        'log_trace' => true, // 异常日志是否记录trace信息
     ];
 
     /**
@@ -69,7 +71,7 @@ class Logger
     /**
      * @var LogWriter 写日志类
      */
-    protected $writer = null;
+    protected $writer = [];
 
     /**
      * Logger constructor.
@@ -78,7 +80,7 @@ class Logger
      * @param LogWriter $writer   执行写操作的对象
      * @param array     $option   设置
      */
-    public function __construct(string $log_name, LogWriter $writer, array $option = [])
+    public function __construct($log_name, $writer, $option = [])
     {
         $this->log_name = $log_name;
         $this->writer = $writer;
@@ -90,12 +92,12 @@ class Logger
 
     /**
      * 记录日志
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param int   $level 异常等级
      * @param array $msg   错误消息 [msg1, msg2, ..., msgn] 按顺序组合
      */
-    protected function log(int $level, array $msg)
+    protected function log($level, $msg)
     {
         // 过滤不超过阈值的异常
         if ($level < $this->option['log_threshold']) {
@@ -121,14 +123,14 @@ class Logger
 
     /**
      * 格式化一行日志
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param int   $level 异常等级
      * @param array $msg   异常信息 [msg1, msg2, ..., msgn] 按顺序组合
      *
      * @return string
      */
-    protected function formatLine(int $level, array $msg)
+    protected function formatLine($level, $msg)
     {
         $datatime = $this->encloseSquareBrackets(date('Y-m-d H:i:s', time()));
         $appid = !empty($this->option['appid']) ? $this->encloseSquareBrackets($this->option['appid']) : '';
@@ -143,7 +145,7 @@ class Logger
             $this->convertToString($msg)
         ];
 
-        return implode($this->option['seperator'], $log_data) . PHP_EOL;
+        return implode($this->option['seperator'], $log_data);
     }
 
     /**
@@ -152,7 +154,7 @@ class Logger
      * @param string $var
      * @return string
      */
-    protected function encloseSquareBrackets(string $var)
+    protected function encloseSquareBrackets($var)
     {
         return '[' . $var . ']';
     }
@@ -203,20 +205,22 @@ class Logger
 
     /**
      * 保存日志
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param array $content 写入内容
      */
     protected function write($content = [])
     {
         if (!empty($content)) {
-            $this->writer->write($this->log_name, implode(PHP_EOL, $content));
+            foreach ($this->writer as $entry) {
+                $entry->write($this->log_name, implode(PHP_EOL, $content) . PHP_EOL);
+            }
         }
     }
 
     /**
      * 清楚缓存
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      */
     private function clearCache()
     {
@@ -234,7 +238,7 @@ class Logger
 
     /**
      * Debug
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -245,7 +249,7 @@ class Logger
 
     /**
      * Info
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -256,7 +260,7 @@ class Logger
 
     /**
      * Notice
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -267,7 +271,7 @@ class Logger
 
     /**
      * Warning
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -278,7 +282,7 @@ class Logger
 
     /**
      * Error
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -289,7 +293,7 @@ class Logger
 
     /**
      * Critical
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -300,7 +304,7 @@ class Logger
 
     /**
      * Alert
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param $msg
      */
@@ -309,36 +313,45 @@ class Logger
         $this->log(self::ALERT, $msg);
     }
 
-    /**
-     * Emergency
-     * @author: xieyong <qxieyongp@163.com>
-     *
-     * @param $msg
-     */
-    public function emergency(...$msg)
+    public function var(...$msg)
     {
-        $this->log(self::EMERGENCY, $msg);
+        $data = [];
+        foreach ($msg as $entry) {
+            $data[] = var_export($entry, true);
+        }
+        $this->debug($data);
     }
 
     /**
      * 记录异常信息
-     * @author: xieyong <qxieyongp@163.com>
+     * @author: xieyong <xieyong@xiaomi.com>
      *
      * @param \Throwable $e
      */
     public function logException(Throwable $e)
     {
-        $msg = [];
+        $msg = [
+            'code' => $e->getCode(),
+            'msg' => $e->getMessage(),
+            $e->getFile() . ":" . $e->getLine(),
+        ];
 
-        do {
-            $msg[] = [
-                'code' => $e->getCode(),
-                'msg' => $e->getMessage(),
-                'file' => $e->getFile() . ":" . $e->getLine(),
+        if ($this->option['log_trace'] === true && defined('DEBUG') && DEBUG === true) {
+            $msg['trace'] = "\n" . $e->getTraceAsString();
+        }
+
+        $previous = $e->getPrevious();
+        while ($previous !== null) {
+            $msg[] = "\n";
+            $msg['previous'][] = [
+                "\n",
+                'code' => $previous->getCode(),
+                'msg' => $previous->getMessage(),
+                $previous->getFile() . ":" . $previous->getLine(),
             ];
 
-            $e = $e->getPrevious();
-        } while ($e !== null && $msg[] = "\nPrevious:\n");
+            $previous = $previous->getPrevious();
+        }
 
         if ($e instanceof \Exception) {
             $this->log(self::EXCEPTION, $msg);
