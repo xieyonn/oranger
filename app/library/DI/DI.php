@@ -9,12 +9,6 @@
 
 namespace App\Library\DI;
 
-use App\Library\Exception\DIException;
-
-/**
- * Class DI
- * @package App\Library\DI
- */
 class DI
 {
     /**
@@ -25,10 +19,6 @@ class DI
      * @var array 已注册服务
      */
     protected $services = [];
-    /**
-     * @var array 已共享服务
-     */
-    protected $shared_services = [];
 
     /**
      * DI constructor.
@@ -39,11 +29,10 @@ class DI
 
     /**
      * 单例模式，获取实例
-     * @author: xieyong <qxieyongp@163.com>
      */
     public static function getInstance()
     {
-        if (! self::$_instance instanceof self) {
+        if (!self::$_instance instanceof self) {
             self::$_instance = new self();
         }
 
@@ -51,18 +40,27 @@ class DI
     }
 
     /**
-     * 设置服务
-     * @author: xieyong <qxieyongp@163.com>
+     * 重置(重置后需要重新定义服务)
      *
+     * @return void
+     */
+    public static function reset()
+    {
+        self::$_instance = null;
+    }
+
+    /**
+     * 设置服务
+     * 
      * @param string $name 服务名字
      * @param        $define
      *
      * @throws DIException
      */
-    public function set(string $name, $define)
+    public function set($name, $define)
     {
         if (isset($this->services[$name])) {
-            throw new DIException('SERVICE_DUPLICATE_DEFINE');
+            throw new DIException('SERVICE_DUPLICATE_DEFINE', ['name' => $name]);
         }
 
         $service = new DIService($name, $define, false);
@@ -71,7 +69,6 @@ class DI
 
     /**
      * 获取服务
-     * @author: xieyong <qxieyongp@163.com>
      *
      * @param string $name 服务名
      * @param mixed  $params 调用服务时传递的参数
@@ -79,10 +76,10 @@ class DI
      * @return mixed
      * @throws DIException
      */
-    public function get(string $name, ...$params)
+    public function get($name, ...$params)
     {
-        if (! isset($this->services[$name])) {
-            throw new DIException('SERVICE_NOT_DEFINED');
+        if (!isset($this->services[$name])) {
+            throw new DIException('SERVICE_NOT_DEFINED', ['name' => $name]);
         }
 
         $service = $this->services[$name];
@@ -92,42 +89,45 @@ class DI
 
     /**
      * 设置共享服务
-     * @author: xieyong <qxieyongp@163.com>
      *
      * @param string $name 服务名
      * @param        $define
      *
      * @throws DIException
      */
-    public function setShared(string $name, $define)
+    public function setShared($name, $define)
     {
-        if (isset($this->shared_services[$name])) {
-            throw new DIException('SERVICE_DUPLICATE_DEFINE');
+        if (isset($this->services[$name])) {
+            throw new DIException('SERVICE_DUPLICATE_DEFINE', ['name' => $name]);
         }
 
         $service = new DIService($name, $define, true);
-        $this->shared_services[$name] = $service;
+        $this->services[$name] = $service;
+    }
+
+     /**
+     * 判断是否设置了某服务
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function has($name)
+    {
+        return isset($this->services[$name]);
     }
 
     /**
-     * 获取共享服务
-     * @author: xieyong <qxieyongp@163.com>
+     * 魔术方法获取服务(只能以无参调用)
      *
-     * @param string $name 服务名
-     * @param array  $params 调用参数
-     *
-     * @return mixed
-     * @throws DIException
-     * @throws \Exception
+     * @param string $name
+     * @return void
      */
-    public function getShared(string $name, ...$params)
+    public function __get($name)
     {
-        if (! isset($this->shared_services[$name])) {
-            throw new DIException('SERVICE_NOT_DEFINED');
+        if (isset($this->services[$name])) {
+            return $this->services[$name]->invoke();
         }
 
-        $service = $this->shared_services[$name];
-
-        return $service->invoke(...$params);
+        throw new DIException('SERVICE_NOT_DEFINED', ['name' => $name]);
     }
 }

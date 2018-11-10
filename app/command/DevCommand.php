@@ -9,11 +9,12 @@
 namespace App\Command;
 
 use App\Library\Console\CommandBase;
+use App\Library\DI\DI;
 
 class DevCommand extends CommandBase
 {
     public function indexAction()
     {
-        
+        DI::getInstance()->console_log->info('aa');
     }
 }

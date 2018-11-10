@@ -8,7 +8,7 @@
  * @Time: 16:00
  */
 
-$config = require(CONFIG_PATH . '/config.php');
+$config = require(__DIR__ . DIRECTORY_SEPARATOR . 'config.php');
 
 return [
     'db' => [

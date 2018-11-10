@@ -17,3 +17,6 @@ dist/
 
 # php config
 /conf/config.php
+
+# log
+/logs

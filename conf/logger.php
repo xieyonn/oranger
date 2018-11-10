@@ -8,44 +8,70 @@
  * @date 2018-03-23
  */
 use App\Library\Logger\LogAdapterFactory;
+use App\Library\Logger\Logger;
 
 return [
+    'uncaught_error_log' => [
+        'name'    => 'uncaught_error', // 未捕获异常 or 错误
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
+        'options' => [
+            'log_threshold' => Logger::EXCEPTION,
+            // 'delay_write' => false,
+            'log_trace' => true,
+        ],
+    ],
     // debug
-    [
+    'debug_log' => [
         'name'    => 'debug',
-        'type'    => LogAdapterFactory::ADAPTER_TYPE_FILE,
-        'options' => [],
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
+        'options' => [
+            'delay_write' => false,
+            'log_trace' => false,
+        ],
     ],
     // 错误日志
-    [
+    'error_log' => [
         'name'    => 'error',
-        'type'    => LogAdapterFactory::ADAPTER_TYPE_FILE,
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
         'options' => [],
     ],
     // 数据库连接日志
-    [
+    'db_connection_log' => [
         'name'    => 'db_connection',
-        'type'    => LogAdapterFactory::ADAPTER_TYPE_FILE,
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
         'options' => [],
     ],
     // 数据库日志
-    [
+    'database' => [
         'name'    => 'database',
-        'type'    => LogAdapterFactory::ADAPTER_TYPE_FILE,
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
         'options' => [],
     ],
     // 命令行输出
-    [
+    'console_log' => [
         'name'    => 'console',
-        'type'    => LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
         'options' => [
             'delay_write' => false,
+            'log_trace' => false,
         ],
-    ],
-    // 命令行日志记录
-    [
-        'name'    => 'command',
-        'type'    => LogAdapterFactory::ADAPTER_TYPE_FILE,
-        'options' => [],
     ],
 ];

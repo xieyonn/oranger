@@ -9,8 +9,6 @@
 
 namespace App\Library\Logger;
 
-use App\Library\Logger\Adapter\FileWriter;
-
 class LoggerFactory
 {
     /**
