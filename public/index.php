@@ -11,7 +11,7 @@
  */
 
 // 定义执行环境
-define('ENV', 'dev');
+define('ENV', 'prod');
 
 if (defined('ENV') && ENV === 'dev') {
     define('DEBUG', true);
@@ -43,14 +43,14 @@ if (phpversion() < 7) {
 }
 
 // 检查php扩展
-$need_extentions = ['yaf', 'PDO', 'pdo_mysql', 'json', 'mbstring'];
-$php_extentions = get_loaded_extensions();
-foreach ($need_extentions as $ext) {
-    if (!in_array($ext, $php_extentions)) {
-        echo 'need extension: ' . $ext;
-        exit(-1);
-    }
-}
+// $need_extentions = ['yaf', 'PDO', 'pdo_mysql', 'json', 'mbstring'];
+// $php_extentions = get_loaded_extensions();
+// foreach ($need_extentions as $ext) {
+//     if (!in_array($ext, $php_extentions)) {
+//         echo 'need extension: ' . $ext;
+//         exit(-1);
+//     }
+// }
 
 // psr-4 autoloader
 define('NAMESPACE_ROOT', LIB_PATH); // 命名空间根目录为app/library
