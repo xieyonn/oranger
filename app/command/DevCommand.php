@@ -9,11 +9,12 @@
 namespace App\Command;
 
 use App\Library\Console\CommandBase;
+use App\Library\DI\DI;
 
 class DevCommand extends CommandBase
 {
     public function indexAction()
     {
-        echo 'hello';
+        DI::getInstance()->console_lg->info('aa');
     }
 }

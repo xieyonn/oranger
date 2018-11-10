@@ -37,7 +37,7 @@ class Exception extends \Exception
      *
      * @throws \Exception
      */
-    public function __construct($message = "", Throwable $previous = null)
+    public function __construct($message = "", $params = [], Throwable $previous = null)
     {
         if (empty($message)) {
             throw new \Exception('exception message is empty');
@@ -52,6 +52,14 @@ class Exception extends \Exception
         }
 
         $msg = $this->map[$message][self::$_language];
+        // 替换变量
+        if (!empty($params)) {
+            $p = [];
+            foreach ($params as $key => $val) {
+                $p['{' . $key . '}'] = $val;
+            }
+            $msg = strtr($msg, $p);
+        }
         $code = $this->map[$message]['code'];
 
         parent::__construct($msg, $code, $previous);

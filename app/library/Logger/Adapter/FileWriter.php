@@ -42,15 +42,8 @@ class FileWriter implements LogWriter
             mkdir($dir, $this->file_permissions);
         }
 
-        // 日志按日期归类
-        $sub_dir = $dir . DIRECTORY_SEPARATOR . date('Y_m_d', NOW_TIME);
-
-        if (! file_exists($sub_dir)) {
-            mkdir($sub_dir, $this->file_permissions);
-        }
-
         // 写日志
-        $file = $sub_dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
+        $file = $dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
         file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
     }
 }

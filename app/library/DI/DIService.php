@@ -9,13 +9,8 @@
 
 namespace App\Library\DI;
 
-use App\Library\Exception\DIException;
 use Throwable;
 
-/**
- * Class Service
- * @package App\Library\DI
- */
 class DIService
 {
     /**
@@ -54,7 +49,7 @@ class DIService
      *
      * @param mixed $param
      *
-     * @author: xieyong <qxieyongp@163.com>
+     * 
      * @return mixed
      * @throws DIException
      */
@@ -82,7 +77,7 @@ class DIService
                 $this->shared_instance = $instance;
             }
         } catch (Throwable $e) {
-            throw new DIException('INVOKE_SERVICE_FAILED', $e);
+            throw new DIException('INVOKE_SERVICE_FAILED', ['name' => $this->name], $e);
         }
 
         return $instance;
@@ -90,7 +85,7 @@ class DIService
 
     /**
      * 判断服务是否共享
-     * @author: xieyong <qxieyongp@163.com>
+     * 
      * @return bool
      */
     public function isShared()
