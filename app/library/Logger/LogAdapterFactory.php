@@ -12,8 +12,8 @@ namespace App\Library\Logger;
 class LogAdapterFactory
 {
     protected static $m_type_class = [
-        self::ADAPTER_TYPE_FILE => __NAMESPACE__ . "\\adapter\FileWriter",
-        self::ADAPTER_TYPE_CONSOLE => __NAMESPACE__ . '\\adapter\ConsoleWriter',
+        self::ADAPTER_TYPE_FILE => __NAMESPACE__ . "\\Adapter\FileWriter",
+        self::ADAPTER_TYPE_CONSOLE => __NAMESPACE__ . '\\Adapter\ConsoleWriter',
     ];
 
     const ADAPTER_TYPE_FILE = 'file';

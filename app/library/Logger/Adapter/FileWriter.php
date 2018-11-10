@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 写文件类
  *
@@ -43,8 +44,11 @@ class FileWriter implements LogWriter
                 mkdir($dir, $this->file_permissions);
             }
 
-        // 写日志
-        $file = $dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
-        file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
+            // 写日志
+            $file = $dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
+            file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
+        } catch (\Exception $e) {
+            throw new SystemException('FILE_PERMISSION_ERROR', [], $e);
+        }
     }
 }
