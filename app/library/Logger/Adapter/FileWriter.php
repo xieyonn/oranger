@@ -21,7 +21,7 @@ class FileWriter implements LogWriter
     /**
      * @var int 日志文件权限
      */
-    protected $file_permissions = 0644;
+    protected $file_permissions = 0777;
 
     public function __construct($dir = '')
     {
