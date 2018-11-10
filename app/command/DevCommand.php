@@ -15,6 +15,6 @@ class DevCommand extends CommandBase
 {
     public function indexAction()
     {
-        DI::getInstance()->console_lg->info('aa');
+        DI::getInstance()->console_log->info('aa');
     }
 }

@@ -86,12 +86,18 @@ class CommandEntry
      */
     protected function processParams($argv, $argc)
     {
-        $this->call_class = $argv[1] ?? '';
-        $this->call_function = $argv[2] ?? '';
+        $call_class = $argv[1] ?? '';
+        $class_func_arry = explode('/', $call_class);
+        if (count($class_func_arry) !== 2) {
+            throw new CliException('INVALID CALL', ['call' => $call_class]);
+        }
+
+        $this->call_class = $this->formatString($class_func_arry[0]);
+        $this->call_function = lcfirst($this->formatString($class_func_arry[1]));
 
         // 有参数
-        if ($argc > 3) {
-            for ($i = 3; $i < $argc; $i++) {
+        if ($argc > 2) {
+            for ($i = 2; $i < $argc; $i++) {
                 $name = $argv[$i];
                 if (preg_match('#^--(\w[\w\d]*)#', $name, $matches)) {
                     $i++;
@@ -100,6 +106,19 @@ class CommandEntry
                 }
             }
         }
+    }
+
+    /**
+     * 横线转驼峰
+     * @return void
+     */
+    protected function formatString($str)
+    {
+        $explode = explode('-', $str);
+        array_walk($explode, function(&$val) {
+            $val = ucfirst($val);
+        });
+        return implode('', $explode);
     }
 
     /**
