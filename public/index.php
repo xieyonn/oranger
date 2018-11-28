@@ -68,3 +68,5 @@ spl_autoload_register(function ($class) {
 
 $app = new Yaf_Application(ROOT_PATH . "/conf/application.ini", ENV);
 $app->bootstrap()->run();
+
+echo 'a';
