@@ -14,14 +14,21 @@ use App\Library\Console\CommandBase;
 
 class ToolCommand extends CommandBase
 {
+    public function nowAction()
+    {
+        var_dump(time());
+        var_dump(date('Y-m-d H:i:s'));
+    }
+    
     public function doAction()
     {
-        $a = file_get_contents('/Users/xieyong/tmp/a');
-        $b = file_get_contents('/Users/xieyong/tmp/b');
+        $body = '{"time":1542955565,"source":"OC-API","waybill_id":518112329504681001,"code":10000,"msg":""}';
+        $appid = 'xm_1001';
+        $key = 'b8848ce2828a451ce2b5b537bcc8fb35';
 
-        $a_arr = explode("\n", $a);
-        $b_arr = explode("\n", $b);
-        var_dump(array_diff($a_arr, $b_arr));
+        $str = $appid . $body . $key;
+        $sign = strtoupper(md5($str));
+        var_dump($sign);
     }
     
     public function indexAction()

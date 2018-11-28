@@ -8,14 +8,19 @@
             "email": "qxieyongp@163.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
-        "xieyong/date-time-helper": "^1.0.0"
+        "xieyong/date-time-helper": "^1.0",
+        "xieyong/multi-process": "^1.0.0"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://micode.be.xiaomi.com/xieyong/date-time-helper"
+        },
+        {
+            "type": "vcs",
+            "url": "https://micode.be.xiaomi.com/xieyong/multi-process"
         }
     ]
 }
