@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/xieyong1023/pages.git"
-  },  
+  },
   "dependencies": {
     "@material-ui/core": "^3.0.3",
     "@material-ui/icons": "^3.0.1",
@@ -44,7 +44,6 @@
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.19.0",
-    "husky": "^0.14.3",
     "prettier": "1.14.3",
     "pretty-quick": "^1.7.0",
     "sass-loader": "^7.1.0",

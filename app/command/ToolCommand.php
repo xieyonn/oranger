@@ -14,17 +14,23 @@ use App\Library\Console\CommandBase;
 
 class ToolCommand extends CommandBase
 {
+    public function doAction()
+    {
+        var_dump(strlen('6180826651837488'));
+    }
+
     public function nowAction()
     {
         var_dump(time());
         var_dump(date('Y-m-d H:i:s'));
     }
     
-    public function doAction()
+    public function ocAction()
     {
-        $body = '{"time":1542955565,"source":"OC-API","waybill_id":518112329504681001,"code":10000,"msg":""}';
+        $body = '{"time":1543419844,"source":"OC-API","waybill_id":518112844721355201,"code":10000,"msg":""}';
         $appid = 'xm_1001';
         $key = 'b8848ce2828a451ce2b5b537bcc8fb35';
+        $key = 'a';
 
         $str = $appid . $body . $key;
         $sign = strtoupper(md5($str));
