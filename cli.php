@@ -52,11 +52,6 @@ require_once CONFIG_PATH . '/define.php';
 
 require ROOT_PATH . '/vendor/autoload.php';
 
-// 检测php版本
-if (phpversion() < 7) {
-    echo 'php version should higher than 7';
-}
-
 // 检查php扩展
 $need_extentions = ['yaf', 'PDO', 'pdo_mysql', 'json', 'mbstring'];
 $php_extentions = get_loaded_extensions();
@@ -85,3 +80,5 @@ spl_autoload_register(function ($class) {
 
 $app = new Yaf_Application(ROOT_PATH . "/conf/application.ini", ENV);
 $app->bootstrap()->execute((new \App\Library\Console\CommandEntry())->run());
+
+

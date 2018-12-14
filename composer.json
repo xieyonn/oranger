@@ -8,14 +8,10 @@
             "email": "qxieyongp@163.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
-        "xieyong/date-time-helper": "^1.0.0"
+        "felixfbecker/language-server": "dev-master"
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://micode.be.xiaomi.com/xieyong/date-time-helper"
-        }
     ]
 }

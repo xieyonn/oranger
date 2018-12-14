@@ -16,12 +16,25 @@ class ToolCommand extends CommandBase
 {
     public function doAction()
     {
-        $a = file_get_contents('/Users/xieyong/tmp/a');
-        $b = file_get_contents('/Users/xieyong/tmp/b');
+        var_dump(strlen('6180826651837488'));
+    }
 
-        $a_arr = explode("\n", $a);
-        $b_arr = explode("\n", $b);
-        var_dump(array_diff($a_arr, $b_arr));
+    public function nowAction()
+    {
+        var_dump(time());
+        var_dump(date('Y-m-d H:i:s'));
+    }
+    
+    public function ocAction()
+    {
+        $body = '{"time":1543419844,"source":"OC-API","waybill_id":518112844721355201,"code":10000,"msg":""}';
+        $appid = 'xm_1001';
+        $key = 'b8848ce2828a451ce2b5b537bcc8fb35';
+        $key = 'a';
+
+        $str = $appid . $body . $key;
+        $sign = strtoupper(md5($str));
+        var_dump($sign);
     }
     
     public function indexAction()
