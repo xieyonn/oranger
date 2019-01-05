@@ -23,8 +23,7 @@ class TestCommand extends CommandBase
 {
     public function runAction()
     {
-        $obj = new B();
-        $obj->index();
+
     }
 
     public function f1($line)

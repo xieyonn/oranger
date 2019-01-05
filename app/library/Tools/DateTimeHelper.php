@@ -15,11 +15,11 @@ class DateTimeHelper
     /**
      * format unix_timestamp, with specified timezone if provided.
      *
-     * @param integer $unix_timestamp unix_timestamp, default 0.
-     * @param string $format date or time formats
-     * @param string $timezone timezone, see http://php.net/manual/en/timezones.php
+     * @param  int        $unix_timestamp unix_timestamp, default 0.
+     * @param  string     $format         date or time formats
+     * @param  string     $timezone       timezone, see http://php.net/manual/en/timezones.php
      * @throws \Exception illegal timezone
-     * @return string datetime
+     * @return string     datetime
      */
     public static function toDateTime(
         $unix_timestamp = 0,
@@ -36,11 +36,11 @@ class DateTimeHelper
         if (empty($timezone)) {
             return $date_time_cst;
         }
-        
+
         $date_obj = new \DateTime($date_time_cst);
         try {
             $timezone_obj = new \DateTimeZone($timezone);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             throw new \Exception('illegal timezone');
         }
         $date_obj->setTimezone($timezone_obj);
@@ -51,9 +51,9 @@ class DateTimeHelper
     /**
      * convert datetime string to unix_timestamp, with specified timezone if provided.
      *
-     * @param string $datetime datetime string to convert
-     * @param string $timezone datetimezone default determined by php config
-     * @return int unix_timestamp
+     * @param  string $datetime datetime string to convert
+     * @param  string $timezone datetimezone default determined by php config
+     * @return int    unix_timestamp
      */
     public static function toUnixTimeStamp($datetime = '', $timezone = '')
     {
