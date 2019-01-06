@@ -16,7 +16,6 @@ define('ENV', 'prod');
 if (defined('ENV') && ENV === 'dev') {
     define('DEBUG', true);
 } else {
-    define('ENV', 'prod');
     define('DEBUG', false);
 }
 
