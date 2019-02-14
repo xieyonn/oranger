@@ -14,9 +14,11 @@ class DateTimeIterator implements Iterator
 {
     const ORDER_LOW_HIGH = 0;
     const ORDER_HIGH_LOW = 1;
-    
+
     protected $begin_time = 0;
+
     protected $end_time = 0;
+
     protected $position = 0;
 
     protected $option = [
@@ -35,7 +37,7 @@ class DateTimeIterator implements Iterator
         $this->end_time = $end_time;
         $this->position = 0;
 
-        if (!empty($option)) {
+        if (! empty($option)) {
             $this->option = array_merge($this->option, $option);
         }
     }
@@ -43,13 +45,13 @@ class DateTimeIterator implements Iterator
     /**
      * 统一出口
      *
-     * @param int $begin_time
-     * @param int $end_time
+     * @param  int   $begin_time
+     * @param  int   $end_time
      * @return array
      */
     protected function outPut($begin_time, $end_time)
     {
-        if (!$this->option['is_format']) {
+        if (! $this->option['is_format']) {
             return [
                 'begin_time' => $begin_time,
                 'end_time' => $end_time,
@@ -65,8 +67,8 @@ class DateTimeIterator implements Iterator
     /**
      * 时间戳转换为字符串
      *
-     * @param int $unix_timestamp
-     * @param string $timezone
+     * @param  int    $unix_timestamp
+     * @param  string $timezone
      * @return string
      */
     protected function toDateTime($unix_timestamp, $timezone)
@@ -105,10 +107,10 @@ class DateTimeIterator implements Iterator
             // 从低到高
             $current_begin = $this->begin_time + ($step * $this->position);
             $current_end = $current_begin + $step;
-    
+
             if ($current_end >= $this->end_time) {
                 $current_end = $this->end_time;
-            } else if ($this->option['no_common_border']) {
+            } elseif ($this->option['no_common_border']) {
                 // 边界分离
                 $current_end -= 1;
             }
@@ -119,7 +121,7 @@ class DateTimeIterator implements Iterator
 
             if ($current_begin <= $this->begin_time) {
                 $current_begin = $this->begin_time;
-            } else if ($this->option['no_common_border']){
+            } elseif ($this->option['no_common_border']) {
                 // 边界分离
                 $current_begin += 1;
             }
@@ -143,9 +145,8 @@ class DateTimeIterator implements Iterator
         if ($this->option['order'] === self::ORDER_LOW_HIGH) {
             $position_time = $this->begin_time + ($this->option['step_length'] * $this->position);
             return ($position_time < $this->end_time);
-        } else {
-            $position_time = $this->end_time - ($this->option['step_length'] * $this->position);
-            return ($position_time > $this->begin_time);
         }
+        $position_time = $this->end_time - ($this->option['step_length'] * $this->position);
+        return ($position_time > $this->begin_time);
     }
 }

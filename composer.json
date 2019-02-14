@@ -8,9 +8,8 @@
             "email": "qxieyongp@163.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "felixfbecker/language-server": "dev-master"
     },
     "repositories": [
     ]
