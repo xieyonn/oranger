@@ -14,6 +14,10 @@ use App\Library\Iterator\DateTimeIterator;
 class DevCommand extends CommandBase
 {
     public $a;
+
+    public function __construct()
+    {
+    }
     
     /**
      * undocumented function
@@ -24,7 +28,7 @@ class DevCommand extends CommandBase
 
     public function actionIndex()
     {
-        $a = new DateTimeIterator();
+        // DI::getInstance()->redis
     }
 
 

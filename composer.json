@@ -10,7 +10,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "felixfbecker/language-server": "dev-master"
+        "felixfbecker/language-server": "dev-master",
+        "guzzlehttp/guzzle": "~6.0",
+        "zendframework/zend-httphandlerrunner": "~1.1.0"
+    },
+    "require-dev": {
     },
     "repositories": [
     ]
