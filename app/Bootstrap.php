@@ -98,4 +98,21 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
             }
         }
     }
+
+    /**
+     * 注册redis服务
+     *
+     * @return void
+     * @author xieyong
+     */
+    public function _init_redis()
+    {
+        $redis_config_array = \App\Library\Config\ConfigManager::getInstance()->getConfig('redis')->toArray();
+
+        if (!empty($redis_config_array)) {
+            foreach ($db_config_array as $name => $config) {
+                
+            }
+        }
+    }
 }

@@ -15,9 +15,12 @@ use App\Library\MultiProcess\ProcessClone;
 class DevCommand extends CommandBase
 {
     public $a;
+    protected $di;
 
     public function __construct()
-    {}
+    {
+        $this->di = DI::getInstance();
+    }
     
     /**
      * undocumented function
@@ -28,12 +31,7 @@ class DevCommand extends CommandBase
 
     public function indexAction()
     {
-        // DI::getInstance()->redis
-        $call = function () {
-            echo '123...';
-        };
-        
-        $p = new ProcessClone(3, $call, []);
-        $p->run();
+        $this->di->redis->set('hello', 'world');
+        var_dump($this->di->redis->get('hello'));
     }
 }
