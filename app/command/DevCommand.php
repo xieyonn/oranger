@@ -10,14 +10,14 @@ namespace App\Command;
 use App\Library\Console\CommandBase;
 use App\Library\DI\DI;
 use App\Library\Iterator\DateTimeIterator;
+use App\Library\MultiProcess\ProcessClone;
 
 class DevCommand extends CommandBase
 {
     public $a;
 
     public function __construct()
-    {
-    }
+    {}
     
     /**
      * undocumented function
@@ -26,17 +26,14 @@ class DevCommand extends CommandBase
      * @author yourname
      */
 
-    public function actionIndex()
-    {
-        // DI::getInstance()->redis
-    }
-
-
     public function indexAction()
     {
-        $i = new DateTimeIterator(strtotime('2018-01-01'), strtotime('2018-01-10'));
-        foreach ($i as $key => $value) {
-            var_dump($value);
-        }
+        // DI::getInstance()->redis
+        $call = function () {
+            echo '123...';
+        };
+        
+        $p = new ProcessClone(3, $call, []);
+        $p->run();
     }
 }

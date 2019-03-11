@@ -39,16 +39,12 @@ class FileWriter implements LogWriter
     {
         $dir = rtrim($this->dir, DIRECTORY_SEPARATOR);
 
-        try {
-            if (!file_exists($dir)) {
-                mkdir($dir, $this->file_permissions);
-            }
-
-            // 写日志
-            $file = $dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
-            file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
-        } catch (\Exception $e) {
-            throw new SystemException('FILE_PERMISSION_ERROR', [], $e);
+        if (!file_exists($dir)) {
+            mkdir($dir, $this->file_permissions);
         }
+
+        // 写日志
+        $file = $dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
+        file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
     }
 }
