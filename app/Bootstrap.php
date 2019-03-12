@@ -70,8 +70,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         $di = \App\Library\DI\DI::getInstance();
 
         foreach ($logger_config_array as $logger_config) {
-            // 日志服务*不*是共享服务
-            $di->set(
+            // 日志服务是共享服务
+            $di->setShared(
                 $logger_config['name'] . '_log',
                 \App\Library\Logger\LoggerFactory::getLogger(
                     $logger_config['name'],
@@ -110,8 +110,14 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         $redis_config_array = \App\Library\Config\ConfigManager::getInstance()->getConfig('redis')->toArray();
 
         if (!empty($redis_config_array)) {
-            foreach ($db_config_array as $name => $config) {
-                
+            foreach ($redis_config_array as $name => $config) {
+                \App\Library\DI\DI::getInstance()
+                    ->setShared($name, function () use ($config) {
+                        return new \Predis\Client([
+                            'host' => $config['host'],
+                            'port' => $config['port'],
+                        ]);
+                    });
             }
         }
     }
