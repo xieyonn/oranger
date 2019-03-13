@@ -18,4 +18,8 @@ return [
     // 用户密码加密密钥
     'password_key' => '',
     'admin_password_key' => '',
+
+    'redis.host' => '',
+    'redis.port' => '',
+    'redis.prefix' => '',
 ];
