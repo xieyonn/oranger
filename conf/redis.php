@@ -12,5 +12,6 @@ return [
     'redis' => [
         'host' => $config['redis.host'],
         'port' => $config['redis.port'],
+        'prefix' => $config['redis.prefix'],
     ]
 ];
