@@ -7,9 +7,8 @@
 
 namespace App\Library\Core;
 
-use Throwable;
-use Yii;
 use App\Library\DI\DI;
+use Throwable;
 
 class ErrorHandler
 {
@@ -35,8 +34,11 @@ class ErrorHandler
     ];
 
     protected $is_cli; // 是否命令行界面
+
     protected $is_prod = true; // 是否是线上环境
+
     protected $di;
+
     protected $defult_msg = 'Internal Server Error';
 
     public function __construct()
@@ -45,11 +47,12 @@ class ErrorHandler
         $this->is_prod = (defined('ENV') && ENV === 'prod');
         $this->di = DI::getInstance();
     }
-    
+
     /**
      * 捕捉异常
      *
-     * @param \Exception $e
+     * @param  \Exception $e
+     * @param  mixed      $exception
      * @return void
      */
     public function exceptionHanlder($exception)
@@ -58,33 +61,24 @@ class ErrorHandler
             if ($this->di->has('uncaught_error_log')) {
                 $this->di->get('uncaught_error_log')->logException($exception);
             }
-            
+
             $code = $exception->getCode();
             $msg = $exception->getMessage();
             if ($code === 0) {
                 $code = self::ERROR_CODE;
             }
-            // 线上web环境隐藏异常信息(不管是否开启DEBUG)
-            // if ($this->is_prod && ! $this->is_cli) {
-                // if ($exception instanceof \Exception) {
-                    // if ($exception->getCode() < ExceptionBase::SYSTEM_EXCEPTION_CODE) {
-                    //     $code = self::ERROR_CODE; // 异常系统错误码
-                    //     $msg = $this->defult_msg;
-                    // }
-                // }
-            // }
-            
+
             // 打印调试信息
             if (defined('DEBUG') && DEBUG === true) {
                 $msg .= $exception->getTraceAsString();
             }
 
             if (! $this->is_cli) {
-                $statusCode = 500;
-                if ($exception instanceof \yii\web\HttpException) {
-                    $statusCode = $exception->statusCode;
+                $http_code = 500;
+                if ($exception instanceof \App\Library\Core\HttpException) {
+                    $http_code = $exception->http_code;
                 }
-                $this->httpResponse($code, $msg, $statusCode);
+                $this->httpResponse($code, $msg, $http_code);
             } else {
                 if ($this->di->has('console_log')) {
                     $this->di->get('console_log')->logException($exception);
@@ -97,24 +91,25 @@ class ErrorHandler
         }
     }
 
-    protected function httpResponse($code, $msg, $statusCode = 500)
+    protected function httpResponse($code, $msg, $http_code = 500)
     {
-        $response = Yii::$app->response;
-        $response->setStatusCode($statusCode);
-        $response->format = \yii\web\Response::FORMAT_JSON;
-        $response->data =  [
+        $response = new Yaf_Response_Http();
+        $response->setBody(\json_encode([
             'code' => $code,
-            'message' => $msg,
+            'msg' => $msg,
             'data' => [],
-        ];
-        $response->send();
-        exit();
+        ], JSON_UNESCAPED_UNICODE));
+        $response->response();
     }
 
     /**
      * 错误处理
      *
-     * @param [type] $e
+     * @param  [type] $e
+     * @param  mixed  $code
+     * @param  mixed  $message
+     * @param  mixed  $file
+     * @param  mixed  $line
      * @return void
      */
     public function errorHandler($code, $message, $file, $line)
@@ -128,16 +123,16 @@ class ErrorHandler
                         $file . ":" . $line,
                     ]);
                 }
-                
+
                 $msg = "$message $file:$line";
-                
+
                 if ($this->is_prod && ! $this->is_cli) {
                     $this->httpResponse(self::ERROR_CODE, $this->defult_msg);
                 }
-    
+
                 $error_type = self::ERROR_TYPE[$code];
                 if ($this->is_cli) {
-                    echo "[PHP {$error_type}][" . date('Y-m-d H:i:s') ."] " . $msg . "\n";
+                    echo "[PHP {$error_type}][" . date('Y-m-d H:i:s') . "] " . $msg . "\n";
                 } else {
                     $this->httpResponse($code, $msg);
                 }

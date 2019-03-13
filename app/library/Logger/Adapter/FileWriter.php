@@ -44,7 +44,7 @@ class FileWriter implements LogWriter
         }
 
         // 写日志
-        $file = $dir . DIRECTORY_SEPARATOR . $log_name . DATE_STRING;
+        $file = $dir . DIRECTORY_SEPARATOR . $log_name . '.log';
         file_put_contents($file, $content, FILE_APPEND | LOCK_EX);
     }
 }

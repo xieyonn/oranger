@@ -1,10 +1,8 @@
 <?php
 
-use App\Library\Logger\LogAdapterFactory;
 use App\Library\Config\ConfigManager;
 
 /**
- *
  * 所有在Bootstrap类中, 以_init开头的方法, 都会被Yaf调用,
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
@@ -28,6 +26,18 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
             ini_set('display_errors', 0);
             error_reporting(0);
         }
+    }
+
+    /**
+     * 设置错误处理函数
+     *
+     * @return void
+     * @author xieyong
+     */
+    public function __init_error_handler()
+    {
+        \set_exception_handler([ErrorHandler, 'exceptionHanlder']);
+        \set_error_handler([ErrorHandler, 'errorHandler']);
     }
 
     /**
@@ -90,7 +100,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     {
         $db_config_array = \App\Library\Config\ConfigManager::getInstance()->getConfig('database')->toArray();
 
-        if (!empty($db_config_array)) {
+        if (! empty($db_config_array)) {
             foreach ($db_config_array as $name => $config) {
                 // 数据库连接是共享服务
                 \App\Library\DI\DI::getInstance()
@@ -109,7 +119,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     {
         $redis_config_array = \App\Library\Config\ConfigManager::getInstance()->getConfig('redis')->toArray();
 
-        if (!empty($redis_config_array)) {
+        if (! empty($redis_config_array)) {
             foreach ($redis_config_array as $name => $config) {
                 \App\Library\DI\DI::getInstance()
                     ->setShared($name, function () use ($config) {
