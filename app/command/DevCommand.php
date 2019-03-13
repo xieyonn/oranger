@@ -30,7 +30,6 @@ class DevCommand extends CommandBase
      */
     public function indexAction()
     {
-        // throw new \Exception('test');
-        0 / 0;
+        $reids = $this->di->redis;
     }
 }

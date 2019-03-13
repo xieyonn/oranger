@@ -126,6 +126,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
                         return new \Predis\Client([
                             'host' => $config['host'],
                             'port' => $config['port'],
+                        ], [
+                            'prefix' => $config['prefix'],
                         ]);
                     });
             }
