@@ -333,7 +333,7 @@ class Logger
         $msg = [
             'code' => $e->getCode(),
             'msg' => $e->getMessage(),
-            $e->getFile() . ":" . $e->getLine(),
+            'file' => $e->getFile() . ":" . $e->getLine(),
         ];
 
         if ($this->option['log_trace'] === true && defined('DEBUG') && DEBUG === true) {

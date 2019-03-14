@@ -27,35 +27,17 @@ class DevCommand extends CommandBase
      * undocumented function
      *
      * @return void
-     * @author xieyong
-     */
-    public function testAction()
-    {
-        $a = [
-            '123',
-            'abc'
-        ];
-
-        $this->di->redis->set('key', \json_encode($a));
-        var_dump($this->di->redis->get('key'));
-    }
-
-    /**
-     * undocumented function
-     *
-     * @return void
      * @author yourname
      */
     public function indexAction()
     {
-        // $reids = $this->di->redis;
-
-        $config = new KeyValConfig();
-
-        $config->insert([
-            'k' => 'test',
-            'v' => 'val',
-        ]);
-
+        $test = new \App\Library\Model\Test();
+        $test->insert(
+            ['id' => 1],
+            ['id' => 3],
+            ['id' => 5],
+            ['id' => 7],
+            ['id' => 100],
+        );
     }
 }

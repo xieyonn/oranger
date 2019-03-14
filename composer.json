@@ -13,7 +13,8 @@
         "felixfbecker/language-server": "dev-master",
         "guzzlehttp/guzzle": "~6.0",
         "zendframework/zend-httphandlerrunner": "~1.1.0",
-        "predis/predis": "v1.1.1"
+        "predis/predis": "v1.1.1",
+        "catfan/medoo": "v1.6.1"
     },
     "require-dev": {
         "predis/predis": "v1.1.1"

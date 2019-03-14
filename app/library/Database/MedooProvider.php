@@ -10,6 +10,7 @@
 namespace App\Library\Database;
 
 use App\Library\DI\DI;
+use Medoo\Medoo;
 use PDO;
 
 /**

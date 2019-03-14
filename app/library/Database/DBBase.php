@@ -272,7 +272,7 @@ class DBBase
         }
 
         try {
-            return $this->medoo->insert($this->table, ...$data);
+            return $this->medoo->insert($this->table, $data);
         } catch (\PDOException $e) {
             $this->logger->logException($e);
 
