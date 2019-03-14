@@ -12,7 +12,7 @@ namespace App\Library\Service;
 use App\Library\Config\ConfigManager;
 use App\Library\Exception\DBException;
 use App\Library\Exception\UserServiceException;
-use App\Library\Mysql\UserCore;
+use App\Library\Model\UserCore;
 use App\Library\Tools\Encrypt;
 use App\Library\Core\Service;
 

@@ -65,11 +65,14 @@ class DBBase
         $this->di = DI::getInstance();
         $this->logger = $this->di->get($this->logger_name . '_log');
 
-        $this->medoo = $this->di->getShared($this->config_name . '_db');
+        $this->medoo = $this->di->get($this->config_name);
         if (false === $this->medoo) {
             throw new DBException('DB_CONNECTION_ERROR');
         }
 
+        if ('' === $this->table) {
+            throw new DBException('DB_TABLENAME_EMPTY');
+        }
         $this->pdo = $this->medoo->pdo;
     }
 

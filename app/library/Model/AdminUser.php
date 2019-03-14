@@ -7,7 +7,7 @@
  * @Time: 20:40
  */
 
-namespace App\Library\Mysql;
+namespace App\Library\Model;
 
 use App\Library\Database\DBBase;
 use App\Library\Exception\DBException;
@@ -15,14 +15,14 @@ use App\Library\Tools\StringHelper;
 
 /**
  * Class AdminUser
- * @package App\Library\Mysql
+ * @package App\Library\Model
  */
 class AdminUser extends DBBase
 {
     /**
      * @var string 数据库配置名
      */
-    protected $config_name = 'default';
+    protected $config_name = 'db';
     /**
      * @var string 表名
      */

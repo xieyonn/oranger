@@ -13,7 +13,7 @@ use App\Library\Config\ConfigManager;
 use App\Library\Core\Service;
 use App\Library\Exception\AdminUserServiceException;
 use App\Library\Exception\DBException;
-use App\Library\Mysql\AdminUser;
+use App\Library\Model\AdminUser;
 use App\Library\Tools\Encrypt;
 
 class AdminUserService extends Service

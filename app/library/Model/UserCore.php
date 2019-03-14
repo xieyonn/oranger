@@ -7,16 +7,12 @@
  * @Time: 10:47
  */
 
-namespace App\Library\Mysql;
+namespace App\Library\Model;
 
 use App\Library\Database\DBBase;
 use App\Library\Exception\DBException;
 use App\Library\Tools\StringHelper;
 
-/**
- * Class UserCore
- * @package App\Library\Mysql
- */
 class UserCore extends DBBase
 {
     /**
