@@ -77,6 +77,17 @@ class DBBase
     }
 
     /**
+     * 获取数据库表名
+     *
+     * @return string
+     * @author xieyong
+     */
+    public static function tableName()
+    {
+        return (new static)->table;
+    }
+
+    /**
      * 获取数据
      * @author: xieyong <qxieyongp@163.com>
      *
