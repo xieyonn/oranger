@@ -44,6 +44,15 @@ return [
         ],
         'options' => [],
     ],
+    // php错误日志
+    'php_error_log' => [
+        'name'    => 'php_error',
+        'type'    => [
+            LogAdapterFactory::ADAPTER_TYPE_FILE,
+            LogAdapterFactory::ADAPTER_TYPE_CONSOLE,
+        ],
+        'options' => [],
+    ],
     // 数据库连接日志
     'db_connection_log' => [
         'name'    => 'db_connection',

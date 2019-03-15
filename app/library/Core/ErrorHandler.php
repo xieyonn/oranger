@@ -79,10 +79,6 @@ class ErrorHandler
                     $http_code = $exception->http_code;
                 }
                 $this->httpResponse($code, $msg, $http_code);
-            } else {
-                if ($this->di->has('console_log')) {
-                    $this->di->get('console_log')->logException($exception);
-                }
             }
         } catch (\Exception $e) {
             $this->handleFallbackExceptionMessage($e, $exception);
@@ -116,9 +112,11 @@ class ErrorHandler
     {
         try {
             if (error_reporting() & $code) {
-                if ($this->di->has('error_log')) {
-                    $this->di->get('error_log')->error([
+                $error_type = self::ERROR_TYPE[$code];
+                if ($this->di->has('php_error_log')) {
+                    $this->di->get('php_error_log')->error([
                         'code' => $code,
+                        '[' . $error_type . ']',
                         'msg' => $message,
                         $file . ":" . $line,
                     ]);
@@ -130,10 +128,7 @@ class ErrorHandler
                     $this->httpResponse(self::ERROR_CODE, $this->defult_msg);
                 }
 
-                $error_type = self::ERROR_TYPE[$code];
-                if ($this->is_cli) {
-                    echo "[PHP {$error_type}][" . date('Y-m-d H:i:s') . "] " . $msg . "\n";
-                } else {
+                if (!$this->is_cli) {
                     $this->httpResponse($code, $msg);
                 }
             }
