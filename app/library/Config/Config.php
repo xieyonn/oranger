@@ -44,13 +44,13 @@ class Config
      *
      * @param string $key key
      *
-     * @return mixed
      * @throws ConfigException
+     * @return mixed
      */
     public function item(string $key = '')
     {
         if (! isset($this->config[$key])) {
-            throw new ConfigException('CONFIG_ITEM_NOT_EXIST');
+            throw new ConfigException('CONFIG_ITEM_NOT_EXIST', ['key' => $key]);
         }
 
         return $this->config[$key];

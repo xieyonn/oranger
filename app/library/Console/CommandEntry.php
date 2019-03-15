@@ -28,9 +28,6 @@ class CommandEntry
      */
     public function run()
     {
-        set_exception_handler(ConsoleExceptionHandler::getExceptionHandler());
-        set_error_handler(ConsoleExceptionHandler::getErrorHandler());
-
         return function () {
             $this->processParams($_SERVER['argv'], $_SERVER['argc']);
 
@@ -44,7 +41,7 @@ class CommandEntry
             $reflection = new \ReflectionClass($obj);
 
             if (!$reflection->isSubclassOf('\Oranger\Library\Console\CommandBase')) {
-                throw new CliException('COMMAND_CLASS_SHOULD_INHERIT_COMMAND_BASE');
+                throw new CliException('COMMAND_CLASS_SHOULD_INHERIT_COMMAND_BASE', ['class' => $class_name]);
             }
 
             if (empty($this->call_function) || !$reflection->hasMethod($this->call_function . 'Action')) {
@@ -57,23 +54,19 @@ class CommandEntry
                 return;
             }
 
-            try {
-                $method = $reflection->getMethod($this->call_function . 'Action');
+            $method = $reflection->getMethod($this->call_function . 'Action');
 
-                $pass = [];
-                foreach ($method->getParameters() as $param) {
-                    if (isset($this->parmas[$param->getName()])) {
-                        $pass[] = $this->parmas[$param->getName()];
-                    } else {
-                        $pass[] = $param->getDefaultValue();
-                    }
+            $pass = [];
+            foreach ($method->getParameters() as $param) {
+                if (isset($this->parmas[$param->getName()])) {
+                    $pass[] = $this->parmas[$param->getName()];
+                } else {
+                    $pass[] = $param->getDefaultValue();
                 }
-
-                $obj->_invoke_args = $this->parmas;
-                return $method->invokeArgs($obj, $pass);
-            } catch (\Throwable $e) {
-                DI::getInstance()->get('console_log')->logException($e);
             }
+
+            $obj->_invoke_args = $this->parmas;
+            return $method->invokeArgs($obj, $pass);
         };
     }
 

@@ -40,15 +40,16 @@ define('LOG_PATH', ROOT_PATH . '/logs');
 define('LIB_PATH', APP_PATH . '/library');
 define('VIEW_PATH', APP_PATH . '/views');
 define('COMMAND_PATH', APP_PATH . '/command');
+define('LANG_PATH', APP_PATH . '/lang');
 
 // 定义时区
 date_default_timezone_set("Asia/Shanghai");
 
 // 站点配置
-require_once CONFIG_PATH . '/site_config.php';
+require CONFIG_PATH . '/site_config.php';
 
 // 其他宏定义
-require_once CONFIG_PATH . '/define.php';
+require CONFIG_PATH . '/define.php';
 
 require ROOT_PATH . '/vendor/autoload.php';
 

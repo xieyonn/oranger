@@ -10,6 +10,7 @@ namespace Oranger\Command;
 use Oranger\Library\Console\CommandBase;
 use Oranger\Library\DI\DI;
 use Oranger\Library\Model\KeyValConfig;
+use Oranger\Library\Config\ConfigManager;
 
 class DevCommand extends CommandBase
 {
@@ -28,12 +29,8 @@ class DevCommand extends CommandBase
      * @return void
      * @author yourname
      */
-    public function indexAction()
+    public function indexAction($a)
     {
-        $sql = <<<EOL
-select * from test
-EOL;
-        $data = $this->di->db->pdo->query($sql)->fetchAll();
-        var_dump($data);
+        ConfigManager::getInstance()->getConfig('test');
     }
 }

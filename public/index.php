@@ -26,6 +26,7 @@ define('CONFIG_PATH', ROOT_PATH . '/conf');
 define('LOG_PATH', ROOT_PATH . '/logs');
 define('LIB_PATH', APP_PATH . '/library');
 define('VIEW_PATH', APP_PATH . '/views');
+define('LANG_PATH', APP_PATH . '/lang');
 
 // 定义时区
 date_default_timezone_set("Asia/Shanghai");
@@ -52,16 +53,16 @@ if (phpversion() < 7) {
 // }
 
 // psr-4 autoloader
-define('NAMESPACE_ROOT', LIB_PATH); // 命名空间根目录为app/library
 spl_autoload_register(function ($class) {
-    // 去除App\Library\前缀
-    if (0 !== preg_match("#^App\\\\Library\\\\(.*)#", $class, $matches)) {
-        $path = $matches[1];
-        $path_array = explode('\\', $path);
-        $file_path = NAMESPACE_ROOT . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $path_array) . '.php';
-        if (file_exists($file_path)) {
-            include $file_path;
-        }
+    $path_array = explode('\\', trim($class, '\\\\'));
+    unset($path_array[0]);
+
+    if (isset($path_array[1])) {
+        $path_array[1] = lcfirst($path_array[1]);
+    }
+    $file_path = APP_PATH . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $path_array) . '.php';
+    if (file_exists($file_path)) {
+        include_once $file_path;
     }
 });
 

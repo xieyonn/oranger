@@ -11,11 +11,17 @@ namespace Oranger\Library\MultiProcess;
 class ProcessCloneParams
 {
     protected $callable; // 任务
+
     protected $max_process_num; // 进程数上限
+
     protected $params; // 任务参数
+
     protected $current_process_num = 0; // 当前进程总数
+
     protected $task_called_num = 0; // 已执行的任务数目
+
     protected $finish_num = 0; // 已完成的任务数目
+
     protected $task_num; // 任务总数
 
     public function __construct($max_process_num, $callable, $params)
@@ -59,7 +65,7 @@ class ProcessCloneParams
                 exit(0);
             }
 
-            if ($this->current_process_num === $this->max_process_num 
+            if ($this->current_process_num === $this->max_process_num
                 || $this->task_called_num === $this->task_num
                 || $this->max_process_num <= 0
             ) {
@@ -69,18 +75,18 @@ class ProcessCloneParams
                 // 父进程阻塞，等待子进程退出
 
                 $heart = 1;
-                while(true) {
+                while (true) {
                     // WNOHANG 非阻塞调用让父进程保持心跳
                     $rtv = pcntl_wait($status, WNOHANG);
 
-                    if ($rtv == 0 ) {
+                    if ($rtv == 0) {
                         usleep(100000);
                         $heart++;
                         if ($heart === 50) {
                             // 每5s输出一次心跳
                             $this->log("当前子进程总数", $this->current_process_num, '等待子进程退出...');
                             $heart = 1;
-                        } 
+                        }
                         continue;
                     }
 
@@ -100,7 +106,7 @@ class ProcessCloneParams
             } else {
                 $pid = pcntl_fork();
                 $this->current_process_num++;
-                
+
                 $param = array_shift($this->params);
                 $this->task_called_num++;
 
@@ -117,7 +123,7 @@ class ProcessCloneParams
                     // 子进程
                     $rand = rand(1, 5);
                     usleep($rand * 100000); // 随机等待，避免同时刻运行
-                    
+
                     $this->log('子进程', posix_getpid(), '开始运行');
                     try {
                         call_user_func_array($this->callable, $param);

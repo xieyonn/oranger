@@ -12,7 +12,7 @@ use Throwable;
 
 class ErrorHandler
 {
-    const ERROR_CODE = 999999;
+    const ERROR_CODE = 9999;
 
     // php内置错误类型 -> string的映射
     const ERROR_TYPE = [

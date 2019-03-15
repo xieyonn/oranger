@@ -19,11 +19,11 @@ use Oranger\Library\Core\Exception;
 class DIException extends Exception
 {
     /**
-     * @var array 范围 101000 ~ 102000
+     * @var array 范围 1100~1120
      */
     protected $map = [
-        'SERVICE_DUPLICATE_DEFINE' => ['code' => 101001, 'zh_cn' => '服务{name}重复定义'],
-        'SERVICE_NOT_DEFINED' => ['code' => 101002, 'zh_cn' => '服务{name}未定义'],
-        'INVOKE_SERVICE_FAILED' => ['code' => 101003, 'zh_cn' => '服务{name}调用失败'],
+        'SERVICE_DUPLICATE_DEFINE' => 1101,
+        'SERVICE_NOT_DEFINED' => 1102,
+        'INVOKE_SERVICE_FAILED' => 1103,
     ];
 }

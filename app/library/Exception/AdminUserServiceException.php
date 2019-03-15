@@ -18,11 +18,11 @@ use Oranger\Library\Core\Exception;
 class AdminUserServiceException extends Exception
 {
     /**
-     * @var array 范围 105000 ~ 106000
+     * @var array 范围 1200-1300
      */
     protected $map = [
-        'USERNAME_IS_EMPTY' => ['code' => 105001, 'zh_cn' => '用户名为空'],
-        'DB_ERROR'          => ['code' => 105002, 'zh_cn' => '数据库错误'],
-        'USERNAME_EXISTED'  => ['code' => 105003, 'zh_cn' => '用户名已存在'],
+        'USERNAME_IS_EMPTY' => 1201,
+        'DB_ERROR' => 1202,
+        'USERNAME_EXISTED' => 1203,
     ];
 }

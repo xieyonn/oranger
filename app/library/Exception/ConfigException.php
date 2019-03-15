@@ -18,11 +18,11 @@ use Oranger\Library\Core\Exception;
 class ConfigException extends Exception
 {
     /**
-     * @var array 范围 100000 ~ 101000
+     * @var array 范围 1120-1130
      */
     protected $map = [
-        'CONFIG_PATH_NOT_SET'   => ['code' => 100001, 'zh_cn' => '配置文件路径未设置'],
-        'CONFIG_FILE_NOT_EXIST' => ['code' => 100002, 'zh_cn' => '配置文件不存在'],
-        'CONFIG_ITEM_NOT_EXIST' => ['code' => 100003, 'zh_cn' => '配置项不存在'],
+        'CONFIG_PATH_NOT_SET' => 1121,
+        'CONFIG_FILE_NOT_EXIST' => 1122,
+        'CONFIG_ITEM_NOT_EXIST' => 1123,
     ];
 }

@@ -10,20 +10,17 @@
 namespace Oranger\Library\Core;
 
 use Throwable;
+use Oranger\Library\Tools\T;
 
 class Exception extends \Exception
 {
     /**
      * $_map = [
-     *     'EXCEPTION_NAME' => ['code' => 1, 'zh_cn' => '中文名'],
+     *     'EXCEPTION_NAME' => ['code' => 1001],
      * ]
      * @var array 字典
      */
     protected $map = [];
-    /**
-     * @var string 输出语言
-     */
-    protected static $_language = 'zh_cn';
 
     /**
      * Exception constructor.
@@ -40,35 +37,13 @@ class Exception extends \Exception
         }
 
         if (! isset($this->map[$message])) {
-            throw new \Exception('exception type is not set yet : ' . $message);
+            throw new \Exception('exception code is not set yet');
         }
 
-        if (! isset($this->map[$message]['code']) || ! isset($this->map[$message][self::$_language])) {
-            throw new \Exception('exception code or content is not set yet');
-        }
 
-        $msg = $this->map[$message][self::$_language];
-        // 替换变量
-        if (!empty($params)) {
-            $p = [];
-            foreach ($params as $key => $val) {
-                $p['{' . $key . '}'] = $val;
-            }
-            $msg = strtr($msg, $p);
-        }
-        $code = $this->map[$message]['code'];
+        $code = $this->map[$message];
+        $msg = T::intl($code, $params);
 
         parent::__construct($msg, $code, $previous);
-    }
-
-    /**
-     * 设置异常时输出语言
-     * @author: xieyong <qxieyongp@163.com>
-     *
-     * @param string $language
-     */
-    public static function setLanguage(string $language)
-    {
-        self::$_language = $language;
     }
 }

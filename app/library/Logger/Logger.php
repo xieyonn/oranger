@@ -338,7 +338,7 @@ class Logger
 
         if ($this->option['log_trace'] === true && defined('DEBUG') && DEBUG === true) {
             $msg[] = "\n";
-            $msg['trace'] = "\n" . $e->getTraceAsString();
+            $msg['Stack trace'] = "\n" . $e->getTraceAsString();
         }
 
         $previous = $e->getPrevious();

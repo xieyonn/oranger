@@ -32,6 +32,7 @@ define('CONFIG_PATH', ROOT_PATH . '/conf');
 define('LOG_PATH', ROOT_PATH . '/logs');
 define('LIB_PATH', APP_PATH . '/library');
 define('VIEW_PATH', APP_PATH . '/views');
+define('LANG_PATH', APP_PATH . '/lang');
 
 // 定义时区
 date_default_timezone_set("Asia/Shanghai");
@@ -58,7 +59,6 @@ if (phpversion() < 7) {
 // }
 
 // psr-4 autoloader
-define('NAMESPACE_ROOT', LIB_PATH); // 命名空间根目录为app/library
 spl_autoload_register(function ($class) {
     $path_array = explode('\\', trim($class, '\\\\'));
     unset($path_array[0]);

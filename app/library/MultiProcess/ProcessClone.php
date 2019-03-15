@@ -1,7 +1,7 @@
 <?php
 /**
  * @brief 多进程处理同一个任务
- * 
+ *
  * 规定创建的进程数，父进程创建多个子进程同时运行一个任务
  *
  * @author xieyong <xieyong@xiaomi.com>
@@ -13,9 +13,13 @@ namespace Oranger\Library\MultiProcess;
 class ProcessClone
 {
     protected $callable; // 任务
+
     protected $max_process_num; // 进程数上限
+
     protected $params; // 任务参数(多个任务使用相同任务参数)
+
     protected $current_process_num = 0; // 当前进程总数
+
     protected $finish = 0; // 已完成进程总数
 
     public function __construct($max_process_num, $callable, $params = [])
@@ -29,7 +33,7 @@ class ProcessClone
             throw new ProcessException('INVALIED_CALLABLE', ['c' => $callable]);
         }
         $this->callable = $callable;
-        
+
         $this->params = $params;
     }
 
@@ -42,7 +46,7 @@ class ProcessClone
             exit(0);
         }
 
-        for($i = 0; $i < $this->max_process_num; $i++) {
+        for ($i = 0; $i < $this->max_process_num; $i++) {
             $pid = pcntl_fork();
 
             if ($pid == -1) {
@@ -57,12 +61,12 @@ class ProcessClone
                 try {
                     call_user_func_array($this->callable, $this->params);
                     exit(0); // 子进程执行完后退出
-                } catch(\Exception $e) {
+                } catch (\Exception $e) {
                     throw new ProcessException('EXCEPTION_CATCH', [], $e);
                     exit(1);
                 }
             }
-            
+
             if ($pid > 0) {
                 // 父进程
                 if (++$this->current_process_num < $this->max_process_num) {
@@ -71,10 +75,10 @@ class ProcessClone
                 }
 
                 // 等待子进程退出
-                while(1) {
+                while (1) {
                     $rtv = pcntl_wait($status, WUNTRACED);
                     $this->finish++;
-                    
+
                     if ($rtv == -1) {
                         $this->log('等待子进程退出异常');
                     }
@@ -87,7 +91,7 @@ class ProcessClone
                         $this->log("所有进程执行完毕");
 
                         if ($call_back !== null) {
-                            if (!is_callable($call_back)) {
+                            if (! is_callable($call_back)) {
                                 throw new ProcessException('INVALIED_CALLABLE', ['c' => $call_back]);
                             }
                             call_user_func($call_back);

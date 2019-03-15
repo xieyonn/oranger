@@ -1,6 +1,8 @@
 <?php
 
 use Oranger\Library\Config\ConfigManager;
+use Oranger\Library\Exception\SystemException;
+use Oranger\Library\Core\ErrorHandler;
 
 /**
  * 所有在Bootstrap类中, 以_init开头的方法, 都会被Yaf调用,
@@ -34,10 +36,11 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
      * @return void
      * @author xieyong
      */
-    public function __init_error_handler()
+    public function _init_error_handler()
     {
-        \set_exception_handler([ErrorHandler, 'exceptionHanlder']);
-        \set_error_handler([ErrorHandler, 'errorHandler']);
+        $handler = new ErrorHandler();
+        \set_exception_handler([$handler, 'exceptionHanlder']);
+        \set_error_handler([$handler, 'errorHandler']);
     }
 
     /**
@@ -47,7 +50,17 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _init_exception_language()
     {
         $config = Yaf_Application::app()->getConfig();
-        \Oranger\Library\Core\Exception::setLanguage($config->application->language);
+        $language = $config->application->language;
+        $language_file = LANG_PATH . '/' . $language . '.php';
+
+        if (!file_exists($language_file)) {
+            throw new SystemException('LANGUAGE_FILE_NOT_EXIST');
+        }
+
+        $lang_data = include $language_file;
+        \Oranger\Library\DI\DI::getInstance()->setShared('lang_data', function () use ($lang_data) {
+            return $lang_data;
+        });
     }
 
     /**

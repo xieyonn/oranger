@@ -21,6 +21,6 @@ abstract class CommandBase
             return $this->_invoke_args[$name];
         }
 
-        throw new CliException('PARAMS_NOT_GIVEN');
+        throw new CliException('PARAMS_NOT_GIVEN', ['name' => $name]);
     }
 }

@@ -90,7 +90,7 @@ class ConfigManager
         $file_path = $config_file_path . DIRECTORY_SEPARATOR . $filename . '.php';
 
         if (! file_exists($file_path)) {
-            throw new ConfigException('CONFIG_FILE_NOT_EXIST');
+            throw new ConfigException('CONFIG_FILE_NOT_EXIST', ['file_path' => $file_path]);
         }
 
         $config_data = include $file_path;
