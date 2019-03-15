@@ -7,9 +7,9 @@
  * @Time: 20:00
  */
 
-namespace App\Library\Exception;
+namespace Oranger\Library\Exception;
 
-use App\Library\Core\Exception;
+use Oranger\Library\Core\Exception;
 
 /**
  * Class DBException

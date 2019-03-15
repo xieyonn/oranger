@@ -5,9 +5,9 @@
  * @author xieyong <xieyong@xiaomi.com>
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
-use App\Library\DI\DI;
+use Oranger\Library\DI\DI;
 use Throwable;
 
 class ErrorHandler
@@ -75,7 +75,7 @@ class ErrorHandler
 
             if (! $this->is_cli) {
                 $http_code = 500;
-                if ($exception instanceof \App\Library\Core\HttpException) {
+                if ($exception instanceof \Oranger\Core\HttpException) {
                     $http_code = $exception->http_code;
                 }
                 $this->httpResponse($code, $msg, $http_code);

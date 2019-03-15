@@ -8,7 +8,7 @@
  * @date 2018-07-23
  */
 
-namespace App\Library\MultiProcess;
+namespace Oranger\Library\MultiProcess;
 
 class ProcessClone
 {

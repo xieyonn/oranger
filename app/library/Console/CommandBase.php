@@ -7,10 +7,9 @@
  *@date 2018-03-20
  */
 
-namespace App\Library\Console;
+namespace Oranger\Library\Console;
 
-use App\Library\Exception\CliException;
-
+use Oranger\Library\Exception\CliException;
 
 abstract class CommandBase
 {

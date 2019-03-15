@@ -7,14 +7,10 @@
  * @Time: 22:27
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
 use Throwable;
 
-/**
- * Class Exception
- * @package App\Library\Core
- */
 class Exception extends \Exception
 {
     /**

@@ -8,9 +8,9 @@
  * @Time: 14:38
  */
 
-namespace App\Library\Logger\Adapter;
+namespace Oranger\Library\Logger\Adapter;
 
-use App\Library\Logger\LogWriter;
+use Oranger\Library\Logger\LogWriter;
 
 class FileWriter implements LogWriter
 {

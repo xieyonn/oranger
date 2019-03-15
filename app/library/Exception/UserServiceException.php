@@ -7,9 +7,9 @@
  * @Time: 15:26
  */
 
-namespace App\Library\Exception;
+namespace Oranger\Library\Exception;
 
-use App\Library\Core\Exception;
+use Oranger\Library\Core\Exception;
 
 class UserServiceException extends Exception
 {

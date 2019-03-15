@@ -1,6 +1,6 @@
 <?php
 
-use App\Library\Config\ConfigManager;
+use Oranger\Library\Config\ConfigManager;
 
 /**
  * 所有在Bootstrap类中, 以_init开头的方法, 都会被Yaf调用,
@@ -47,7 +47,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _init_exception_language()
     {
         $config = Yaf_Application::app()->getConfig();
-        \App\Library\Core\Exception::setLanguage($config->application->language);
+        \Oranger\Library\Core\Exception::setLanguage($config->application->language);
     }
 
     /**
@@ -77,13 +77,13 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _init_logger()
     {
         $logger_config_array = ConfigManager::getInstance()->getConfig('logger')->toArray();
-        $di = \App\Library\DI\DI::getInstance();
+        $di = \Oranger\Library\DI\DI::getInstance();
 
         foreach ($logger_config_array as $logger_config) {
             // 日志服务是共享服务
             $di->setShared(
                 $logger_config['name'] . '_log',
-                \App\Library\Logger\LoggerFactory::getLogger(
+                \Oranger\Library\Logger\LoggerFactory::getLogger(
                     $logger_config['name'],
                     $logger_config['type'],
                     $logger_config['options']
@@ -98,13 +98,13 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
      */
     public function _init_database()
     {
-        $db_config_array = \App\Library\Config\ConfigManager::getInstance()->getConfig('database')->toArray();
+        $db_config_array = \Oranger\Library\Config\ConfigManager::getInstance()->getConfig('database')->toArray();
 
         if (! empty($db_config_array)) {
             foreach ($db_config_array as $name => $config) {
                 // 数据库连接是共享服务
-                \App\Library\DI\DI::getInstance()
-                    ->setShared($name, \App\Library\Database\MedooProvider::getMedoo($config));
+                \Oranger\Library\DI\DI::getInstance()
+                    ->setShared($name, \Oranger\Library\Database\MedooProvider::getMedoo($config));
             }
         }
     }
@@ -117,11 +117,11 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
      */
     public function _init_redis()
     {
-        $redis_config_array = \App\Library\Config\ConfigManager::getInstance()->getConfig('redis')->toArray();
+        $redis_config_array = \Oranger\Library\Config\ConfigManager::getInstance()->getConfig('redis')->toArray();
 
         if (! empty($redis_config_array)) {
             foreach ($redis_config_array as $name => $config) {
-                \App\Library\DI\DI::getInstance()
+                \Oranger\Library\DI\DI::getInstance()
                     ->setShared($name, function () use ($config) {
                         return new \Predis\Client([
                             'host' => $config['host'],

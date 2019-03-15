@@ -6,7 +6,7 @@
  * @date 2018-07-23
  */
 
-namespace App\Library\Process;
+namespace Oranger\Library\Process;
 
 class MultiProcess
 {

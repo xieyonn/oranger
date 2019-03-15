@@ -7,7 +7,7 @@
  * @Time: 21:49
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
 class FrontController extends BaseController
 {

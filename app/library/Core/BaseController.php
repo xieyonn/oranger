@@ -7,7 +7,7 @@
  * @time: 13:56
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
 class BaseController extends \Yaf_Controller_Abstract
 {

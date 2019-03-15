@@ -6,7 +6,7 @@
  * @date 2019-03-13 10:54
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
 class HttpException extends Exception
 {

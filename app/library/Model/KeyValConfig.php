@@ -6,9 +6,9 @@
  * @date 2019-03-14 11:02
  */
 
-namespace App\Library\Model;
+namespace Oranger\Library\Model;
 
-use App\Library\Database\DBBase;
+use Oranger\Library\Database\DBBase;
 
 class KeyValConfig extends DBBase
 {

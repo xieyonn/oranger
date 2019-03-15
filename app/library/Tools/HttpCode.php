@@ -7,7 +7,7 @@
  *@date 2018-03-19
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class HttpCode
 {

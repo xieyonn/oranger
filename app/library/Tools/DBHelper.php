@@ -6,7 +6,7 @@
  * @date 2018-04-08
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class DBHelper
 {

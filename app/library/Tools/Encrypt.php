@@ -7,9 +7,9 @@
  * @Time: 22:19
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
-use App\Library\Config\ConfigManager;
+use Oranger\Library\Config\ConfigManager;
 
 /**
  * Class Tools

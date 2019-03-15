@@ -6,7 +6,7 @@
  * @date 2019-03-13 15:01
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class Json
 {

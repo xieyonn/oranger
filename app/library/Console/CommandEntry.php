@@ -7,11 +7,11 @@
  *@date 2018-03-21
  */
 
-namespace App\Library\Console;
+namespace Oranger\Library\Console;
 
-use App\Library\DI\DI;
-use App\Library\Console\CommandBase;
-use App\Library\Exception\CliException;
+use Oranger\Library\DI\DI;
+use Oranger\Library\Console\CommandBase;
+use Oranger\Library\Exception\CliException;
 
 class CommandEntry
 {
@@ -39,11 +39,11 @@ class CommandEntry
                 return;
             }
 
-            $class_name = '\App\Command\\' . $this->call_class . 'Command';
+            $class_name = '\Oranger\Command\\' . $this->call_class . 'Command';
             $obj = new $class_name();
             $reflection = new \ReflectionClass($obj);
 
-            if (!$reflection->isSubclassOf('\App\Library\Console\CommandBase')) {
+            if (!$reflection->isSubclassOf('\Oranger\Library\Console\CommandBase')) {
                 throw new CliException('COMMAND_CLASS_SHOULD_INHERIT_COMMAND_BASE');
             }
 

@@ -7,17 +7,17 @@
  *@date 2018-03-19
  */
 
-namespace App\Command;
+namespace Oranger\Command;
 
-use App\Library\Console\CommandBase;
-use App\Library\Tools\Datehelper;
-use App\Library\Tools\DBHelper;
-use App\Library\DI\DI;
-use App\Library\MultiProcess\Daemon;
-use app\Library\Tools\Profile;
-use app\Library\Tools\ProfileSingleton;
-use App\Library\Process\MultiProcess;
-use App\Library\Tools\DateTimeHelper;
+use Oranger\Console\CommandBase;
+use Oranger\Tools\Datehelper;
+use Oranger\Tools\DBHelper;
+use Oranger\DI\DI;
+use Oranger\MultiProcess\Daemon;
+use Oranger\Tools\Profile;
+use Oranger\Tools\ProfileSingleton;
+use Oranger\Process\MultiProcess;
+use Oranger\Tools\DateTimeHelper;
 
 class TestCommand extends CommandBase
 {

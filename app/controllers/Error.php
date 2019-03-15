@@ -1,6 +1,6 @@
 <?php
 
-use App\Library\Core\BaseController;
+use Oranger\Library\Core\BaseController;
 /**
  *@brief 当有未捕获的异常，控制流会流到这里
  *

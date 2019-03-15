@@ -7,14 +7,10 @@
  * @Time: 13:58
  */
 
-namespace App\Library\Config;
+namespace Oranger\Library\Config;
 
-use App\Library\Exception\ConfigException;
+use Oranger\Library\Exception\ConfigException;
 
-/**
- * Class Config
- * @package App\Library\Config
- */
 class Config
 {
     /**

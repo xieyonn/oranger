@@ -7,14 +7,14 @@
  * @Time: 19:38
  */
 
-namespace App\Library\Service;
+namespace Oranger\Library\Service;
 
-use App\Library\Config\ConfigManager;
-use App\Library\Core\Service;
-use App\Library\Exception\AdminUserServiceException;
-use App\Library\Exception\DBException;
-use App\Library\Model\AdminUser;
-use App\Library\Tools\Encrypt;
+use Oranger\Library\Config\ConfigManager;
+use Oranger\Library\Core\Service;
+use Oranger\Library\Exception\AdminUserServiceException;
+use Oranger\Library\Exception\DBException;
+use Oranger\Library\Model\AdminUser;
+use Oranger\Library\Tools\Encrypt;
 
 class AdminUserService extends Service
 {

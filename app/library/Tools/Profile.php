@@ -6,7 +6,7 @@
  * @author xieyong <xieyong@xiaomi.com>
  */
 
-namespace app\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class Profile
 {

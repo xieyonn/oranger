@@ -7,7 +7,7 @@
  * @Time: 13:32
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 /**
  * Class UrlHelper

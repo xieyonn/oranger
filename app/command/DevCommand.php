@@ -6,11 +6,11 @@
  * @date 2018-10-10
  */
 
-namespace App\Command;
+namespace Oranger\Command;
 
-use App\Library\Console\CommandBase;
-use App\Library\DI\DI;
-use App\Library\Model\KeyValConfig;
+use Oranger\Library\Console\CommandBase;
+use Oranger\Library\DI\DI;
+use Oranger\Library\Model\KeyValConfig;
 
 class DevCommand extends CommandBase
 {
@@ -31,13 +31,10 @@ class DevCommand extends CommandBase
      */
     public function indexAction()
     {
-        $test = new \App\Library\Model\Test();
-        $test->insert(
-            ['id' => 1],
-            ['id' => 3],
-            ['id' => 5],
-            ['id' => 7],
-            ['id' => 100],
-        );
+        $sql = <<<EOL
+select * from test
+EOL;
+        $data = $this->di->db->pdo->query($sql)->fetchAll();
+        var_dump($data);
     }
 }

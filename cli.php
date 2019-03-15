@@ -53,30 +53,28 @@ require_once CONFIG_PATH . '/define.php';
 require ROOT_PATH . '/vendor/autoload.php';
 
 // 检查php扩展
-$need_extentions = ['yaf', 'PDO', 'pdo_mysql', 'json', 'mbstring'];
-$php_extentions = get_loaded_extensions();
-foreach ($need_extentions as $ext) {
-    if (!in_array($ext, $php_extentions)) {
-        echo 'need extension: ' . $ext;
-        exit(-1);
-    }
-}
+// $need_extentions = ['yaf', 'PDO', 'pdo_mysql', 'json', 'mbstring'];
+// $php_extentions = get_loaded_extensions();
+// foreach ($need_extentions as $ext) {
+//     if (!in_array($ext, $php_extentions)) {
+//         echo 'need extension: ' . $ext;
+//         exit(-1);
+//     }
+// }
 
 // psr-4 autoloader
 spl_autoload_register(function ($class) {
     $path_array = explode('\\', trim($class, '\\\\'));
-    // 前两个路径首字母要小写
-    foreach ([0, 1] as $index) {
-        if (! empty($path_array[$index])) {
-            $path_array[$index] = lcfirst($path_array[$index]);
-        }
-    }
+    unset($path_array[0]);
 
-    $file_path = ROOT_PATH . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $path_array) . '.php';
+    if (isset($path_array[1])) {
+        $path_array[1] = lcfirst($path_array[1]);
+    }
+    $file_path = APP_PATH . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $path_array) . '.php';
     if (file_exists($file_path)) {
-        include $file_path;
+        include_once $file_path;
     }
 });
 
 $app = new Yaf_Application(ROOT_PATH . "/conf/application.ini", ENV);
-$app->bootstrap()->execute((new \App\Library\Console\CommandEntry())->run());
+$app->bootstrap()->execute((new \Oranger\Library\Console\CommandEntry())->run());

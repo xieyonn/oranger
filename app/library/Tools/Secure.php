@@ -7,7 +7,7 @@
  * @Time: 12:19
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 /**
  * Class Secure

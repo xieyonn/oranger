@@ -7,7 +7,7 @@
  * @Time: 22:17
  */
 
-namespace App\Library\DI;
+namespace Oranger\Library\DI;
 
 use Throwable;
 

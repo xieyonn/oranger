@@ -7,9 +7,9 @@
  * @Time: 19:58
  */
 
-namespace App\Library\Database;
+namespace Oranger\Library\Database;
 
-use App\Library\DI\DI;
+use Oranger\Library\DI\DI;
 use Medoo\Medoo;
 use PDO;
 
@@ -37,7 +37,7 @@ class MedooProvider
                 'username'      => $config['username'],
                 'password'      => $config['password'],
                 'charset'       => $config['charset'],
-                'prefix'        => '',
+                'prefix'        => $config['prefix'],
                 'logging'       => false,
                 'option'        => [
                     PDO::ATTR_CASE => PDO::CASE_NATURAL, // 保留数据库驱动返回的列名。

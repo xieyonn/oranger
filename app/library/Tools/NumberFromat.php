@@ -7,7 +7,7 @@
  * @date 2018-09-19
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class NumberFormat
 {

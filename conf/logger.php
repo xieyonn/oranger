@@ -7,8 +7,8 @@
  * @author xieyong <qxieyongp@163.com>
  * @date 2018-03-23
  */
-use App\Library\Logger\LogAdapterFactory;
-use App\Library\Logger\Logger;
+use Oranger\Library\Logger\LogAdapterFactory;
+use Oranger\Library\Logger\Logger;
 
 return [
     'uncaught_error_log' => [

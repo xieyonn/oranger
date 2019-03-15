@@ -8,9 +8,9 @@
  * @Time: 22:25
  */
 
-namespace App\Library\DI;
+namespace Oranger\Library\DI;
 
-use App\Library\Core\Exception;
+use Oranger\Library\Core\Exception;
 
 /**
  * Class DIException

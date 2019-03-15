@@ -6,9 +6,9 @@
  * @date 2018-03-21
  */
 
-namespace App\Library\Logger\Adapter;
+namespace Oranger\Library\Logger\Adapter;
 
-use App\Library\Logger\LogWriter;
+use Oranger\Library\Logger\LogWriter;
 
 class ConsoleWriter implements LogWriter
 {

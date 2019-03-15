@@ -7,11 +7,11 @@
  * @Time: 20:40
  */
 
-namespace App\Library\Model;
+namespace Oranger\Library\Model;
 
-use App\Library\Database\DBBase;
-use App\Library\Exception\DBException;
-use App\Library\Tools\StringHelper;
+use Oranger\Library\Database\DBBase;
+use Oranger\Library\Exception\DBException;
+use Oranger\Library\Tools\StringHelper;
 
 /**
  * Class AdminUser

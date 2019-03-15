@@ -6,7 +6,7 @@
  * @date 2018-06-20
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class Math
 {

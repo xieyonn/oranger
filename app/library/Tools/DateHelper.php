@@ -6,7 +6,7 @@
  * @date 2018-04-07
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class Datehelper
 {

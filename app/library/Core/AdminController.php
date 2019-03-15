@@ -7,7 +7,7 @@
  * @Time: 22:31
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
 class AdminController extends BaseController
 {

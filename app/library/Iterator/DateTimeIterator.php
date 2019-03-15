@@ -6,7 +6,7 @@
  * @author xieyong <xieyong@xiaomi.com>
  */
 
-namespace App\Library\Iterator;
+namespace Oranger\Library\Iterator;
 
 use Iterator;
 

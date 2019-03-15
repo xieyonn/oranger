@@ -1,5 +1,5 @@
 <?php
-namespace App\Library\Tools\Validator;
+namespace Oranger\Library\Tools\Validator;
 
 /**
  * Validation Class

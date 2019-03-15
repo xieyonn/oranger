@@ -7,9 +7,9 @@
  * @Time: 16:38
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
-use App\Library\Config\ConfigManager;
+use Oranger\Library\Config\ConfigManager;
 
 /**
  * Class Cookie

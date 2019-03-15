@@ -6,9 +6,9 @@
  *@date 2018-03-21
  */
 
-namespace App\Library\Exception;
+namespace Oranger\Library\Exception;
 
-use App\Library\Core\Exception;
+use Oranger\Library\Core\Exception;
 
 class CliException extends Exception
 {

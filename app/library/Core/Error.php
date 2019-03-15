@@ -7,7 +7,7 @@
  * @time: 15:31
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
 class Error
 {

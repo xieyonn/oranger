@@ -8,7 +8,7 @@
  * @Time: 14:11
  */
 
-namespace App\Library\Logger;
+namespace Oranger\Library\Logger;
 
 use Throwable;
 use Exception;

@@ -6,9 +6,9 @@
  * @date 2019-03-14 14:47
  */
 
-namespace App\Library\Service;
+namespace Oranger\Library\Service;
 
-use App\Library\Model\KeyValConfig;
+use Oranger\Library\Model\KeyValConfig;
 
 class KeyValService
 {

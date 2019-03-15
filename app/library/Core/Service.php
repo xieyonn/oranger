@@ -7,11 +7,11 @@
  * @Time: 14:53
  */
 
-namespace App\Library\Core;
+namespace Oranger\Library\Core;
 
-use App\Library\DI\DI;
-use App\Library\Exception\ServiceException;
-use App\Library\Logger\Logger;
+use Oranger\Library\DI\DI;
+use Oranger\Library\Exception\ServiceException;
+use Oranger\Library\Logger\Logger;
 
 class Service
 {

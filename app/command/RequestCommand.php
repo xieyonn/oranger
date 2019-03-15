@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Command;
+namespace Oranger\Command;
 
-use App\Library\Console\CommandBase;
+use Oranger\Console\CommandBase;
 
 class RequestCommand extends CommandBase
 {

@@ -7,7 +7,7 @@
  *@date 2018-03-21
  */
 
-namespace App\Library\Logger;
+namespace Oranger\Library\Logger;
 
 class LogAdapterFactory
 {

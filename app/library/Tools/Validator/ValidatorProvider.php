@@ -8,7 +8,7 @@
  * @see https://github.com/vlucas/valitron
  */
 
-namespace App\Library\Tools\Validator;
+namespace Oranger\Library\Tools\Validator;
 
 /**
  * Class ValidatorProvider

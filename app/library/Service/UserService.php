@@ -7,14 +7,14 @@
  * @Time: 9:23
  */
 
-namespace App\Library\Service;
+namespace Oranger\Library\Service;
 
-use App\Library\Config\ConfigManager;
-use App\Library\Exception\DBException;
-use App\Library\Exception\UserServiceException;
-use App\Library\Model\UserCore;
-use App\Library\Tools\Encrypt;
-use App\Library\Core\Service;
+use Oranger\Library\Config\ConfigManager;
+use Oranger\Library\Exception\DBException;
+use Oranger\Library\Exception\UserServiceException;
+use Oranger\Library\Model\UserCore;
+use Oranger\Library\Tools\Encrypt;
+use Oranger\Library\Core\Service;
 
 /**
  * Class UserService

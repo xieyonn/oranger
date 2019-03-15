@@ -1,6 +1,6 @@
 <?php
 
-use App\Library\Core\BaseController;
+use Oranger\Library\Core\BaseController;
 
 /**
  *@brief hello

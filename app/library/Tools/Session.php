@@ -7,7 +7,7 @@
  * @Time: 23:15
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 /**
  * Class Session

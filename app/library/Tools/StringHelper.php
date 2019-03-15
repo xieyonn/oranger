@@ -7,7 +7,7 @@
  * @Time: 10:53
  */
 
-namespace App\Library\Tools;
+namespace Oranger\Library\Tools;
 
 class StringHelper
 {

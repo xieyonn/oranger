@@ -7,10 +7,10 @@
  * @Time: 23:26
  */
 
-namespace App\Library\Service;
+namespace Oranger\Library\Service;
 
-use App\Library\Config\ConfigManager;
-use App\Library\Core\Service;
+use Oranger\Library\Config\ConfigManager;
+use Oranger\Library\Core\Service;
 
 /**
  * Class AdminMenuService
@@ -67,7 +67,7 @@ class AdminMenuService extends Service
      * 获取当前页面的左侧菜单
      * @author: xieyong <qxieyongp@163.com>
      * @return array
-     * @throws \App\Library\Exception\ConfigException
+     * @throws \Oranger\Exception\ConfigException
      */
     public function getLeftCategory()
     {

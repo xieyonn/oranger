@@ -7,9 +7,9 @@
  *@date 2018-03-21
  */
 
-namespace App\Library\Console;
+namespace Oranger\Library\Console;
 
-use App\Library\DI\DI;
+use Oranger\Library\DI\DI;
 
 class ConsoleExceptionHandler
 {

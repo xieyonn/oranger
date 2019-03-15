@@ -11,12 +11,12 @@
  * @Time: 13:44
  */
 
-namespace App\Library\Database;
+namespace Oranger\Library\Database;
 
-use App\Library\Core\Exception;
-use App\Library\DI\DI;
-use App\Library\Exception\DBException;
-use App\Library\Logger\Logger;
+use Oranger\Library\Core\Exception;
+use Oranger\Library\DI\DI;
+use Oranger\Library\Exception\DBException;
+use Oranger\Library\Logger\Logger;
 
 /**
  * Class DBBase

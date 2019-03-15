@@ -5,9 +5,10 @@
  * @author xieyong <qxieyongp@163.com>
  * @date 2018-04-09
  */
-namespace App\Command;
 
-use App\Library\Console\CommandBase;
+namespace Oranger\Command;
+
+use Oranger\Console\CommandBase;
 
 class MatchCommand extends CommandBase
 {

@@ -6,7 +6,7 @@
  * @author xieyong <xieyong@xiaomi.com>
  */
 
-namespace App\Library\MultiProcess;
+namespace Oranger\Library\MultiProcess;
 
 class ProcessCloneParams
 {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Library\Core\BaseController;
+use Oranger\Core\BaseController;
 
 class DebugController extends BaseController
 {

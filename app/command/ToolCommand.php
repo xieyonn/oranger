@@ -6,10 +6,10 @@
  * @date 2018-04-07
  */
 
-namespace App\Command;
+namespace Oranger\Command;
 
-use App\Library\Console\CommandBase;
-use App\Library\Tools\StringHelper;
+use Oranger\Console\CommandBase;
+use Oranger\Tools\StringHelper;
 
 class ToolCommand extends CommandBase
 {

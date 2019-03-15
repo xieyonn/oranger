@@ -7,7 +7,7 @@
  * @Time: 21:43
  */
 
-namespace App\Library\Logger;
+namespace Oranger\Library\Logger;
 
 class LoggerFactory
 {

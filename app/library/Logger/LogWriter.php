@@ -7,7 +7,7 @@
  * @Time: 14:34
  */
 
-namespace App\Library\Logger;
+namespace Oranger\Library\Logger;
 
 interface LogWriter
 {

@@ -6,9 +6,9 @@
  * @date 2019-03-14 15:00
  */
 
-namespace App\Library\Exception;
+namespace Oranger\Library\Exception;
 
-use App\Library\Core\Exception;
+use Oranger\Library\Core\Exception;
 
 class KeyValServiceException extends Exception
 {
