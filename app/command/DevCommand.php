@@ -2,8 +2,7 @@
 /**
  * @brief 开发控制器
  *
- * @author xieyong <qxieyongp@163.com>
- * @date 2018-10-10
+ * @author xieyong <qxieyongp@163.com> * @date 2018-10-10
  */
 
 namespace Oranger\Command;
