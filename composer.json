@@ -16,8 +16,7 @@
         "catfan/medoo": "v1.6.1"
     },
     "require-dev": {
-        "felixfbecker/language-server": "dev-master",
-        "predis/predis": "v1.1.1"
+        "felixfbecker/language-server": "dev-master"
     },
     "repositories": [
     ]
