@@ -9,10 +9,6 @@
 
 namespace Oranger\Library\Tools;
 
-/**
- * Class UrlHelper
- * @package App\Library\Tools
- */
 class UrlHelper
 {
     /**

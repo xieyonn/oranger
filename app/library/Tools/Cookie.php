@@ -11,10 +11,6 @@ namespace Oranger\Library\Tools;
 
 use Oranger\Library\Config\ConfigManager;
 
-/**
- * Class Cookie
- * @package App\Library\Tools
- */
 class Cookie
 {
     /**

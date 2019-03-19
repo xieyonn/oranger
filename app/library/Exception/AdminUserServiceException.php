@@ -11,10 +11,6 @@ namespace Oranger\Library\Exception;
 
 use Oranger\Library\Core\Exception;
 
-/**
- * Class AdminUserServiceException
- * @package App\Library\Exception
- */
 class AdminUserServiceException extends Exception
 {
     /**

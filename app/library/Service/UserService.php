@@ -16,10 +16,6 @@ use Oranger\Library\Model\UserCore;
 use Oranger\Library\Tools\Encrypt;
 use Oranger\Library\Core\Service;
 
-/**
- * Class UserService
- * @package App\Library\Service
- */
 class UserService extends Service
 {
     /**

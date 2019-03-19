@@ -13,10 +13,6 @@ use Oranger\Library\DI\DI;
 use Medoo\Medoo;
 use PDO;
 
-/**
- * Class PDOProvider
- * @package App\Library\Database
- */
 class MedooProvider
 {
     /**

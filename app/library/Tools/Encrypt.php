@@ -11,10 +11,6 @@ namespace Oranger\Library\Tools;
 
 use Oranger\Library\Config\ConfigManager;
 
-/**
- * Class Tools
- * @package Library
- */
 class Encrypt
 {
     /**

@@ -9,10 +9,6 @@
 
 namespace Oranger\Library\Tools;
 
-/**
- * Class Session
- * @package App\Library\Tools
- */
 class Session
 {
     /**

@@ -12,10 +12,6 @@ namespace Oranger\Library\Service;
 use Oranger\Library\Config\ConfigManager;
 use Oranger\Library\Core\Service;
 
-/**
- * Class AdminMenuService
- * @package App\Library\Service
- */
 class AdminMenuService extends Service
 {
     /**

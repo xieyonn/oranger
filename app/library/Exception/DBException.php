@@ -11,10 +11,6 @@ namespace Oranger\Library\Exception;
 
 use Oranger\Library\Core\Exception;
 
-/**
- * Class DBException
- * @package App\Library\Exception
- */
 class DBException extends Exception
 {
     /**

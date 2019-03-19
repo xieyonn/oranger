@@ -18,16 +18,12 @@ use Oranger\Library\DI\DI;
 use Oranger\Library\Exception\DBException;
 use Oranger\Library\Logger\Logger;
 
-/**
- * Class DBBase
- * @package App\Library\Database
- */
 class DBBase
 {
     /**
      * @var string 配置在database中的数据库名，所有继承DBbase的类都需要提供
      */
-    protected $config_name = 'default';
+    protected $config_name = 'db';
     /**
      * @var Medoo
      */

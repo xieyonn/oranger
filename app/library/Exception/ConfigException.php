@@ -11,10 +11,6 @@ namespace Oranger\Library\Exception;
 
 use Oranger\Library\Core\Exception;
 
-/**
- * Class ConfigException
- * @package App\Library\Exception
- */
 class ConfigException extends Exception
 {
     /**

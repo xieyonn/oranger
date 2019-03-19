@@ -48,10 +48,6 @@ namespace Oranger\Library\Tools;
 
 use Oranger\Library\Config\ConfigManager;
 
-/**
- * Class UserAgent
- * @package App\Library\Tools
- */
 class UserAgent
 {
     /**

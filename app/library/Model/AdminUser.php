@@ -13,10 +13,6 @@ use Oranger\Library\Database\DBBase;
 use Oranger\Library\Exception\DBException;
 use Oranger\Library\Tools\StringHelper;
 
-/**
- * Class AdminUser
- * @package App\Library\Model
- */
 class AdminUser extends DBBase
 {
     /**

@@ -9,10 +9,6 @@
 
 namespace Oranger\Library\Tools;
 
-/**
- * Class Secure
- * @package App\Library\Tools
- */
 class Secure
 {
     /**

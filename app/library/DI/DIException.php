@@ -12,10 +12,6 @@ namespace Oranger\Library\DI;
 
 use Oranger\Library\Core\Exception;
 
-/**
- * Class DIException
- * @package App\Library\Exception
- */
 class DIException extends Exception
 {
     /**
