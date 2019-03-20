@@ -5,20 +5,17 @@ use PHPUnit\Framework\TestCase;
 class IndexTest extends TestCase
 {
     /**
-     * @dataProvider additionProvider
+     * @group xieyong
      */
-    public function testConsumer($a, $b, $c)
+    public function testExpectFooActualFoo()
     {
-        $this->assertEquals($c, $a + $b);
+        $this->expectOutputString('foo');
+        print 'foo';
     }
 
-    public function additionProvider()
+    public function testExpectBarActualBaz()
     {
-        return [
-            [0, 0, 0],
-            [0, 1, 1],
-            [1, 0, 1],
-            [1, 1, 3],
-        ];
+        $this->expectOutputString('bar');
+        print 'baz';
     }
 }
