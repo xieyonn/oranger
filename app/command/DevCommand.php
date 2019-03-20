@@ -7,7 +7,6 @@
 
 namespace Oranger\Command;
 
-use Oranger\Library\Config\ConfigManager;
 use Oranger\Library\Console\CommandBase;
 use Oranger\Library\DI\DI;
 
@@ -29,8 +28,7 @@ class DevCommand extends CommandBase
      * @param  mixed $a
      * @return void
      */
-    public function indexAction($a)
+    public function indexAction()
     {
-        ConfigManager::getInstance()->getConfig('test');
     }
 }

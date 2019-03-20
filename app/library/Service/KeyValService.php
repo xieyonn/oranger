@@ -9,6 +9,7 @@
 namespace Oranger\Library\Service;
 
 use Oranger\Library\Model\KeyValConfig;
+use Oranger\Library\Exception\KeyValServiceException;
 
 class KeyValService
 {
