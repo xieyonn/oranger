@@ -5,7 +5,7 @@ namespace Oranger\Library\Tools;
 use Iterator;
 
 // http://snipplr.com/view.php?codeview&id=1986 // modified
-class CSVIterator implements Iterator
+class CsvFileIterator implements Iterator
 {
     private $f;
 

@@ -9,7 +9,7 @@ namespace Oranger\Command;
 
 use Oranger\Library\Console\CommandBase;
 use Oranger\Library\DI\DI;
-use Oranger\Library\Tools\CSVIterator;
+use Oranger\Library\Tools\CsvFileIterator;
 
 class DevCommand extends CommandBase
 {
@@ -36,7 +36,7 @@ class DevCommand extends CommandBase
             'combine' => true,
             'headers' => true,
         ];
-        $a = new CSVIterator($file, $opt);
+        $a = new CsvFileIterator($file, $opt);
         foreach ($a as $value) {
             var_dump($value);
         }

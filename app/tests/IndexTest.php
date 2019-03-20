@@ -1,27 +1,24 @@
 <?php
+
 use PHPUnit\Framework\TestCase;
 
 class IndexTest extends TestCase
 {
-    public function testProducerFirst()
-    {
-        $this->assertTrue(true);
-        return 'first';
-    }
-
-    public function testProducerSecond()
-    {
-        $this->assertTrue(true);
-        return 'second';
-    }
-
     /**
-     * @depends testProducerFirst
-     * @depends testProducerSecond
+     * @dataProvider additionProvider
      */
-    public function testConsumer()
+    public function testConsumer($a, $b, $c)
     {
+        $this->assertEquals($c, $a + $b);
+    }
 
+    public function additionProvider()
+    {
+        return [
+            [0, 0, 0],
+            [0, 1, 1],
+            [1, 0, 1],
+            [1, 1, 3],
+        ];
     }
 }
-?>

@@ -2,7 +2,7 @@
 
 namespace Oranger\Library\Tools;
 
-class CSVWriter
+class CsvFileWriter
 {
     public function __construct($file_or_handle, $sep = "\t", $quot = '"')
     {
