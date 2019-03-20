@@ -9,6 +9,7 @@ namespace Oranger\Command;
 
 use Oranger\Library\Console\CommandBase;
 use Oranger\Library\DI\DI;
+use Oranger\Library\Tools\CSVIterator;
 
 class DevCommand extends CommandBase
 {
@@ -30,5 +31,14 @@ class DevCommand extends CommandBase
      */
     public function indexAction()
     {
+        $file = '/Users/xieyong/tmp/a.csv';
+        $opt = [
+            'combine' => true,
+            'headers' => true,
+        ];
+        $a = new CSVIterator($file, $opt);
+        foreach ($a as $value) {
+            var_dump($value);
+        }
     }
 }

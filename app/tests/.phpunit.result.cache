@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":216:{a:2:{s:7:"defects";a:0:{}s:5:"times";a:4:{s:32:"Oranger\Test\IndexTest::testTrue";d:0.006;s:28:"IndexTest::testProducerFirst";d:0.009;s:29:"IndexTest::testProducerSecond";d:0;s:23:"IndexTest::testConsumer";d:0.001;}}}
