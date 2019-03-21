@@ -3,6 +3,7 @@
 use Oranger\Library\Config\ConfigManager;
 use Oranger\Library\Exception\SystemException;
 use Oranger\Library\Core\ErrorHandler;
+use Oranger\Library\Tools\Profile;
 
 /**
  * 所有在Bootstrap类中, 以_init开头的方法, 都会被Yaf调用,
@@ -92,10 +93,10 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         $logger_config_array = ConfigManager::getInstance()->getConfig('logger')->toArray();
         $di = \Oranger\Library\DI\DI::getInstance();
 
-        foreach ($logger_config_array as $logger_config) {
+        foreach ($logger_config_array as $logger_name => $logger_config) {
             // 日志服务是共享服务
             $di->setShared(
-                $logger_config['name'] . '_log',
+                $logger_name,
                 \Oranger\Library\Logger\LoggerFactory::getLogger(
                     $logger_config['name'],
                     $logger_config['type'],
@@ -145,5 +146,17 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
                     });
             }
         }
+    }
+
+    /**
+     * 注册性能记录器
+     *
+     * @return void
+     */
+    public function _init_profile()
+    {
+        \Oranger\Library\DI\DI::getInstance()->setShared('profile', function () {
+            return Profile::getInstance();
+        });
     }
 }

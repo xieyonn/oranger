@@ -63,7 +63,7 @@ return [
         'options' => [],
     ],
     // 数据库日志
-    'database' => [
+    'database_log' => [
         'name'    => 'database',
         'type'    => [
             LogAdapterFactory::ADAPTER_TYPE_FILE,

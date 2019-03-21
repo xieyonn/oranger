@@ -81,12 +81,13 @@ class CommandEntry
     {
         $call_class = $argv[1] ?? '';
         $class_func_arry = explode('/', $call_class);
-        if (count($class_func_arry) !== 2) {
+        if (count($class_func_arry) < 2) {
             throw new CliException('INVALID CALL', ['call' => $call_class]);
         }
 
-        $this->call_class = $this->formatString($class_func_arry[0]);
-        $this->call_function = lcfirst($this->formatString($class_func_arry[1]));
+        $this->call_function = lcfirst($this->formatString(array_pop($class_func_arry)));
+        $class_name_array = array_map([$this, 'formatString'], $class_func_arry);
+        $this->call_class = implode('\\', $class_name_array);
 
         // 有参数
         if ($argc > 2) {

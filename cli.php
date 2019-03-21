@@ -72,9 +72,7 @@ spl_autoload_register(function ($class) {
         $path_array[1] = lcfirst($path_array[1]);
     }
     $file_path = APP_PATH . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $path_array) . '.php';
-    if (file_exists($file_path)) {
-        include_once $file_path;
-    }
+    require $file_path;
 });
 
 $app = new Yaf_Application(ROOT_PATH . "/conf/application.ini", ENV);

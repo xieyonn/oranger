@@ -10,8 +10,23 @@ namespace Oranger\Library\Tools;
 
 class Profile
 {
+    private static $_instance;
     private $data = [];
     private $history = [];
+    const NUMBER_OF_DECIMALS = 4; // 保留4位小数
+
+    private function __construct()
+    {
+    }
+
+    public static function getInstance()
+    {
+        if (!self::$_instance instanceof self) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
+    }
 
     /**
      * 开始记录
@@ -41,7 +56,7 @@ class Profile
         $this->history[$mark][] = $cost;
         $this->data[$mark] = $now; // 多次使用end
 
-        return $cost;
+        return number_format($cost, self::NUMBER_OF_DECIMALS, ".", "");
     }
 
     /**
