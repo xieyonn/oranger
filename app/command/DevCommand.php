@@ -10,6 +10,7 @@ namespace Oranger\Command;
 use Oranger\Library\Console\CommandBase;
 use Oranger\Library\DI\DI;
 use Oranger\Library\Tools\CsvFileIterator;
+use Oranger\Library\Config\ConfigManager;
 
 class DevCommand extends CommandBase
 {
@@ -17,9 +18,11 @@ class DevCommand extends CommandBase
 
     protected $di;
 
+
     public function __construct()
     {
-        $this->di = DI::getInstance();
+        
+
     }
 
     /**
@@ -31,12 +34,10 @@ class DevCommand extends CommandBase
      */
     public function indexAction()
     {
-        $file = '/Users/xieyong/tmp/a.csv';
         $opt = [
             'combine' => true,
             'headers' => true,
         ];
-        $a = new CsvFileIterator($file, $opt);
         foreach ($a as $value) {
             var_dump($value);
         }
