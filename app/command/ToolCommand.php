@@ -10,12 +10,15 @@ namespace Oranger\Command;
 
 use Oranger\Library\Console\CommandBase;
 use Oranger\Library\Tools\StringHelper;
+use Oranger\Library\Tools\PathRemoveDuplicate;
 
 class ToolCommand extends CommandBase
 {
     public function doAction()
     {
-        var_dump(strlen('6180826651837488'));
+        $path = '/usr/local/Cellar/perl/5.28.1/bin:/Users/xieyong/.composer/vendor/bin:/Users/xieyong/usr/php73/bin:/Users/xieyong/.pyenv/plugins/pyenv-virtualenv/shims:/Users/xieyong/.pyenv/shims:/Users/xieyong/usr/stlink/usr/local/bin:/Users/xieyong/usr/apache-maven-3.6.0/bin:/Users/xieyong/.jenv/shims:/Users/xieyong/.jenv/bin:/Users/xieyong/.yarn/bin:/Users/xieyong/.config/yarn/global/node_modules/.bin:/Users/xieyong/usr/bin:/usr/local/Cellar/perl/5.28.1/bin:/Users/xieyong/.composer/vendor/bin:/Users/xieyong/usr/php73/bin:/Users/xieyong/.pyenv/plugins/pyenv-virtualenv/shims:/Users/xieyong/.pyenv/shims:/Users/xieyong/usr/stlink/usr/local/bin:/Users/xieyong/usr/apache-maven-3.6.0/bin:/Users/xieyong/.jenv/shims:/Users/xieyong/.jenv/bin:/Users/xieyong/.yarn/bin:/Users/xieyong/.config/yarn/global/node_modules/.bin:/Users/xieyong/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/usr/local/Cellar/perl/5.28.1/bin:/Users/xieyong/.composer/vendor/bin:/Users/xieyong/usr/php73/bin:/Users/xieyong/.pyenv/plugins/pyenv-virtualenv/shims:/Users/xieyong/.pyenv/shims:/Users/xieyong/usr/stlink/usr/local/bin:/Users/xieyong/usr/apache-maven-3.6.0/bin:/Users/xieyong/.jenv/shims:/Users/xieyong/.jenv/bin:/Users/xieyong/.yarn/bin:/Users/xieyong/.config/yarn/global/node_modules/.bin:/Users/xieyong/usr/bin:/Users/xieyong/go/bin:/usr/local/opt/graphviz/bin:/Users/xieyong/Library/Android/sdk/tools:/Users/xieyong/Library/Android/sdk/platform-tools:/usr/local/opt/gettext/bin:/usr/local/opt/fzf/bin:/Users/xieyong/go/bin:/usr/local/opt/graphviz/bin:/Users/xieyong/Library/Android/sdk/tools:/Users/xieyong/Library/Android/sdk/platform-tools:/usr/local/opt/gettext/bin:/Users/xieyong/go/bin:/usr/local/opt/graphviz/bin:/Users/xieyong/Library/Android/sdk/tools:/Users/xieyong/Library/Android/sdk/platform-tools:/usr/local/opt/gettext/bin';
+        $data = PathRemoveDuplicate::run($path);
+        echo $data;
     }
 
     public function nowAction()

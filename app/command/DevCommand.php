@@ -18,6 +18,7 @@ class DevCommand extends CommandBase
 
     public function __construct()
     {
+        $a = array_column();
     }
 
     /**
