@@ -22,7 +22,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "immutable": "^3.8.2",
-    "npm": "^6.9.0",
+    "npm": "^6.10.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
