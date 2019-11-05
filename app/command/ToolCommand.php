@@ -8,8 +8,8 @@
 
 namespace Oranger\Command;
 
-use Oranger\Console\CommandBase;
-use Oranger\Tools\StringHelper;
+use Oranger\Library\Console\CommandBase;
+use Oranger\Library\Tools\StringHelper;
 
 class ToolCommand extends CommandBase
 {
