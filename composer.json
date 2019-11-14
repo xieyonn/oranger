@@ -13,8 +13,7 @@
         "guzzlehttp/guzzle": "~6.0",
         "zendframework/zend-httphandlerrunner": "~1.1.0",
         "predis/predis": "v1.1.1",
-        "catfan/medoo": "v1.6.1",
-        "xieyong1023/MultiProcess": "dev-master"
+        "catfan/medoo": "v1.6.1"
     },
     "preferred-install": "dist",
     "require-dev": {
@@ -22,7 +21,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/xieyong1023/MultiProcess.git"
+            "url": "https://github.com/xieyonn/MultiProcess.git"
         }
     ]
 }

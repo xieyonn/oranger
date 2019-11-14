@@ -9,6 +9,7 @@
 namespace Oranger\Command;
 
 use Oranger\Library\Console\CommandBase;
+use Oranger\Library\DI\DI;
 
 class DevCommand extends CommandBase
 {
@@ -18,8 +19,9 @@ class DevCommand extends CommandBase
 
     public function __construct()
     {
-        $a = array_column();
-
+        $redis = DI::getInstance()->redis;
+        $data = $redis->object('encoding', 'bit');
+        var_dump($data);
     }
 
     /**
@@ -31,5 +33,15 @@ class DevCommand extends CommandBase
      */
     public function indexAction()
     {
+        $a = [
+            'k1' => 'v1',
+            'k2' => 'v2',
+            'k3' => [
+                'k4' => 'v4',
+                'k5' => 'v5',
+            ],
+        ];
+
+        echo json_encode($a);
     }
 }

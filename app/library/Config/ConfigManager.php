@@ -45,6 +45,8 @@ class ConfigManager
             self::$_instance = new self();
         }
 
+        $a = true;
+
         return self::$_instance;
     }
 
