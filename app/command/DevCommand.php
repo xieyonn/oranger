@@ -49,4 +49,9 @@ class DevCommand extends CommandBase
     {
         echo "xieyong commit";
     }
+
+	public function IndexAction()
+	{
+		echo "this is from x1ey0nn";
+	}
 }
