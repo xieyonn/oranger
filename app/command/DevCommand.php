@@ -44,4 +44,9 @@ class DevCommand extends CommandBase
 
         echo json_encode($a);
     }
+
+    public function yesAction() 
+    {
+        echo "xieyong commit";
+    }
 }
