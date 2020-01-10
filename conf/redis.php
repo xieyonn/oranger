@@ -13,5 +13,6 @@ return [
         'host' => $config['redis.host'],
         'port' => $config['redis.port'],
         'prefix' => $config['redis.prefix'],
+        'password' => $config['redis.password'],
     ]
 ];
