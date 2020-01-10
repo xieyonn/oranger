@@ -1,27 +1,24 @@
 {
-    "name": "xieyong/pages",
-    "type": "project",
-    "license": "GPLv3",
-    "authors": [
-        {
-            "name": "xieyong",
-            "email": "qxieyongp@163.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "guzzlehttp/guzzle": "~6.0",
-        "zendframework/zend-httphandlerrunner": "~1.1.0",
-        "predis/predis": "v1.1.1",
-        "catfan/medoo": "v1.6.1"
-    },
-    "preferred-install": "dist",
-    "require-dev": {
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/xieyonn/MultiProcess.git"
-        }
-    ]
+  "name": "xieyong/pages",
+  "type": "project",
+  "license": "GPLv3",
+  "authors": [
+    {
+      "name": "xieyong",
+      "email": "qxieyongp@163.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "predis/predis": "v1.1.1",
+    "catfan/medoo": "v1.6.1"
+  },
+  "preferred-install": "dist",
+  "require-dev": {},
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/xieyonn/MultiProcess.git"
+    }
+  ]
 }
